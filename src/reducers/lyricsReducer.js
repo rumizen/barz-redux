@@ -2,7 +2,7 @@ export const lyricsReducer = (state = [], action) => {
   switch (action.type) {
     case "SET_ACTIVE":
       return state.map(lyric => {
-        return lyric.id === id
+        return lyric.id === action.id
           ? { ...lyric, active: true }
           : { ...lyric, active: false };
       });
@@ -10,7 +10,7 @@ export const lyricsReducer = (state = [], action) => {
       return state.map(lyric => {
         if (lyric.active === true) {
           return lyric.bars.map(bar => {
-            return bar.id === barId ? { ...bar, text } : bar;
+            return bar.id === action.barId ? { ...bar, text: action.text } : bar;
           });
         } else {
           return lyric
@@ -19,7 +19,7 @@ export const lyricsReducer = (state = [], action) => {
     case "ADD_BAR":
       return state.map(lyric => {
         if (lyric.active === true) {
-          lyric.bars.push(newBar);
+          lyric.bars.push(action.newBar);
           return lyric;
         } else {
           return lyric;
