@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Bar from '../Bar/Bar';
 import './PerformPage.scss';
 
-export const PerformPage = () => {
+export const PerformPage = ({ lyrics }) => {
 
   return (
     <main className="perform-page">
