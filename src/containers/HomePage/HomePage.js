@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setActive } from "../../actions";
 import { bindActionCreators } from "redux";
-import NavBar from '../../components/NavBar/NavBar';
+import { NavLink } from "react-router-dom";
 import "./HomePage.scss";
 
 export class HomePage extends Component {
@@ -10,12 +10,13 @@ export class HomePage extends Component {
   render() {
     return (
       <main className="home-page">
-        <NavBar />
-        <div className="home-page-image"></div>
-        <section className="home-page-lyrics-wrapper"></section>
-        <button className="home-page-write-btn">
+        <div className="home-page-image">
+          <img src="./images/djSmall.jpg"/>
+        </div>
+        <NavLink to="/write" className="home-page-write-btn">
           Write<span className="home-page-write-btn-icon">+</span>
-        </button>
+        </NavLink>
+        <section className="home-page-lyrics-wrapper" />
       </main>
     );
   };
