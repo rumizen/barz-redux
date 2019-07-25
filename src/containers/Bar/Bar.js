@@ -1,14 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getRhymes, setLyrics, addBar } from "../actions";
+import { getRhymes, updateLyrics, addBar } from "../../actions";
 import { fetchRhymes } from "../../apiCalls";
 import { bindActionCreators } from "redux";
 import "./Bar.scss";
 
 export class Bar extends Component {
   state = {
-    text: ""
+    text: "",
+    id: 0
   };
+
+  componentDidMount() {
+    this.setState({ text: this.props.text })
+  }
 
   handleChange = e => {
     this.setState({ text: e.target.value });
@@ -26,6 +31,7 @@ export class Bar extends Component {
         <p className="bar-number">#</p>
         <input
           className="bar-input"
+          id={this.state.id}
           type="text"
           name="text"
           value={this.state.text}
@@ -44,7 +50,7 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch =>
-  bindActionCreators({ getRhymes, setLyrics, addBar }, dispatch);
+  bindActionCreators({ getRhymes, updateLyrics, addBar }, dispatch);
 
 export default connect(
   mapStateToProps,

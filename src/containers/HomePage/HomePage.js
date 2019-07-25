@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setActive } from "../actions";
+import { setActive } from "../../actions";
 import { bindActionCreators } from "redux";
+import NavBar from '../../components/NavBar/NavBar';
 import "./HomePage.scss";
 
 export class HomePage extends Component {
 
   render() {
     return (
-      <main className="main-page">
-        <div className="main-page-image"></div>
-        <section className="main-page-lyrics-wrapper"></section>
-        <button className="main-page-write-btn">
-          Write<span className="main-page-write-btn-icon">+</span>
+      <main className="home-page">
+        <NavBar />
+        <div className="home-page-image"></div>
+        <section className="home-page-lyrics-wrapper"></section>
+        <button className="home-page-write-btn">
+          Write<span className="home-page-write-btn-icon">+</span>
         </button>
       </main>
     );

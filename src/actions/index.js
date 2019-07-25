@@ -11,7 +11,7 @@ export const updateLyrics = (barId, text) => ({
 
 export const addBar = newBar => ({
   type: "ADD_BAR",
-  bar
+  newBar
 });
 
 export const getRhymes = word => ({
