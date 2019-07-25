@@ -5,19 +5,18 @@ import { bindActionCreators } from "redux";
 import "./HomePage.scss";
 
 export class HomePage extends Component {
-  state = {};
 
   render() {
     return (
-      <section className="main-page">
-        <div className="main-page-image" />
-        <div className="main-page-lyrics-list" />
+      <main className="main-page">
+        <div className="main-page-image"></div>
+        <section className="main-page-lyrics-wrapper"></section>
         <button className="main-page-write-btn">
           Write<span className="main-page-write-btn-icon">+</span>
         </button>
-      </section>
+      </main>
     );
-  }
+  };
 };
 
 export const mapStateToProps = state => ({
