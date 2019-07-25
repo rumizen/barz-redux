@@ -1,0 +1,57 @@
+@import '../../index.scss';
+
+.home-page {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home-page-lyrics-wrapper {
+  top: 15vh;
+  position: relative;
+  z-index: 5;
+  height: 85vh;
+  width: 30vw;
+  overflow-y: scroll;
+  background-color: white;
+  // opacity: .8;
+}
+
+.home-page-image {
+  position: absolute;
+  z-index: -10;
+  right: 30vw;
+  // top: 15vh;
+  img {
+    height: 100vh;
+    // width: 500px;
+  }
+}
+
+.home-page-write-btn {
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 50vh;
+  right: 110px;
+  position: relative;
+  z-index: 10;
+  height: 70px;
+  width: 250px;
+  border: 2px solid white;
+  color: white;
+  font-size: 20pt;
+  background-color: $main-background;
+  border-radius: 50px;
+  padding: 0px 20px;
+  opacity: .9;
+  &:hover {
+    opacity: .5;
+    cursor: pointer;
+  }
+  span {
+    text-decoration: none;
+    font-size: 32pt;
+    margin-bottom: 7px;
+  }
+}

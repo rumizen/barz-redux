@@ -6,10 +6,18 @@ export const NavBar = () => {
 
   return (
     <header className="nav-bar">
-      <img src="" alt="bars logo" />
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/write">Write</NavLink>
-      <NavLink to="/perform">Perform</NavLink>
+      <img className="nav-bar-logo" src="./images/logo.svg" alt="bars logo" />
+      <nav className="nav-bar-links-wrapper">
+        <NavLink className="nav-bar-link" to="/">
+          Home
+        </NavLink>
+        <NavLink className="nav-bar-link" to="/write">
+          Write
+        </NavLink>
+        <NavLink className="nav-bar-link" to="/perform">
+          Perform
+        </NavLink>
+      </nav>
     </header>
   );
 };
