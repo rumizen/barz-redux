@@ -8,7 +8,9 @@ export class WritePage extends Component {
 
   renderBars = () => {
     const activeLyric = this.props.lyrics.find(lyric => lyric.active === true);
-    return activeLyric.bars.map((bar, index) => <Bar number={index + 1} text={bar.text} id={bar.id}/>)
+    return activeLyric.bars.map((bar, index) => {
+      return <Bar key={index + 1} number={index + 1} text={bar.text} id={bar.id} active={bar.active}/>
+  });
   }
 
   render() {

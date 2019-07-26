@@ -28,6 +28,17 @@ export const lyricsReducer = (state = [], action) => {
           return lyric;
         };
       });
+    case "UPDATE_BAR_ACTIVE":
+      return state.map(lyric => {
+        if (lyric.active === true) {
+          const updatedBars = lyric.bars.map(bar => {
+            return bar.id === action.barId ? { ...bar, active: action.active } : bar;
+          });
+          return { ...lyric, bars: updatedBars };
+        } else {
+          return lyric
+        };
+      });
     default:
       return state;
   };

@@ -15,12 +15,12 @@ export class HomePage extends Component {
     //       id: 1,
     //       active: true,
     //       bars: [
-    //         { id: 1, text: "yo yo yo yo yo" },
-    //         { id: 2, text: "dude dude dude dude" },
-    //         { id: 3, text: "i dont like your girlfriend" },
-    //         { id: 4, text: "hey hey hey hey" },
-    //         { id: 5, text: "you you you you you" },
-    //         { id: 6, text: "i think you need a new one" }
+    //         { id: 1, text: "yo yo yo yo yo", active: false},
+    //         { id: 2, text: "dude dude dude dude", active: false},
+    //         { id: 3, text: "i dont like your girlfriend", active: false},
+    //         { id: 4, text: "hey hey hey hey", active: false},
+    //         { id: 5, text: "you you you you you", active: false},
+    //         { id: 6, text: "i think you need a new one", active: false}
     //       ]
     //     },
     //     {
@@ -28,12 +28,12 @@ export class HomePage extends Component {
     //       id: 2,
     //       active: false,
     //       bars: [
-    //         { id: 1, text: "yo yo yo yo yo" },
-    //         { id: 2, text: "dude dude dude dude" },
-    //         { id: 3, text: "i dont like your girlfriend" },
-    //         { id: 4, text: "hey hey hey hey" },
-    //         { id: 5, text: "you you you you you" },
-    //         { id: 6, text: "i think you need a new one" }
+    //         { id: 1, text: "yo yo yo yo yo", active: false},
+    //         { id: 2, text: "dude dude dude dude", active: false},
+    //         { id: 3, text: "i dont like your girlfriend", active: false},
+    //         { id: 4, text: "hey hey hey hey", active: false},
+    //         { id: 5, text: "you you you you you", active: false},
+    //         { id: 6, text: "i think you need a new one", active: false}
     //       ]
     //     },
     //     {
@@ -41,12 +41,12 @@ export class HomePage extends Component {
     //       id: 3,
     //       active: false,
     //       bars: [
-    //         { id: 1, text: "yo yo yo yo yo" },
-    //         { id: 2, text: "dude dude dude dude" },
-    //         { id: 3, text: "i dont like your girlfriend" },
-    //         { id: 4, text: "hey hey hey hey" },
-    //         { id: 5, text: "you you you you you" },
-    //         { id: 6, text: "i think you need a new one" }
+    //         { id: 1, text: "yo yo yo yo yo", active: false},
+    //         { id: 2, text: "dude dude dude dude", active: false},
+    //         { id: 3, text: "i dont like your girlfriend", active: false},
+    //         { id: 4, text: "hey hey hey hey", active: false},
+    //         { id: 5, text: "you you you you you", active: false},
+    //         { id: 6, text: "i think you need a new one", active: false}
     //       ]
     //     }
     //   ])
@@ -58,7 +58,7 @@ export class HomePage extends Component {
   renderLyrics = () => {
     return this.props.lyrics.map(lyric => {
       return (
-        <div className="lyric">
+        <div key={lyric.id} className="lyric">
           <p className="lyric-title">{lyric.title}</p>
           <p className="lyric-id">{lyric.id}</p>
         </div>
@@ -70,7 +70,7 @@ export class HomePage extends Component {
     return (
       <main className="home-page">
         <div className="home-page-image">
-          <img src="./images/djSmall.jpg" />
+          <img src="./images/djSmall.jpg" alt="a DJ on his turntable with a spotlight shining on him and a background of red stage lights" />
         </div>
         <NavLink to="/write" className="home-page-write-btn">
           Write<span className="home-page-write-btn-icon">+</span>

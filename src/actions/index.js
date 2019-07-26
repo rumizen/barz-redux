@@ -23,3 +23,9 @@ export const setLyrics = lyrics => ({
   type: "SET_LYRICS",
   lyrics
 });
+
+export const updateBarActive = (barId, active) => ({
+  type: "UPDATE_BAR_ACTIVE",
+  barId,
+  active
+});
