@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setActive, setLyrics } from "../../actions";
+import { setActive } from "../../actions";
 import { bindActionCreators } from "redux";
 import { NavLink } from "react-router-dom";
 import "./HomePage.scss";
 
 export class HomePage extends Component {
-  componentDidMount() {
+  // componentDidMount() {
     // localStorage.setItem(
     //   "lyrics",
     //   JSON.stringify([
@@ -51,12 +51,13 @@ export class HomePage extends Component {
     //     }
     //   ])
     // );
-    const lyrics = JSON.parse(localStorage.getItem("lyrics")) || [];
-    this.props.setLyrics(lyrics);
-  }
+    // const lyrics = JSON.parse(localStorage.getItem("lyrics")) || [];
+    // this.props.setLyrics(lyrics);
+  // }
 
-  renderLyrics = () => {
-    return this.props.lyrics.map(lyric => {
+  render() {
+
+    const allLyrics = this.props.lyrics.map(lyric => {
       return (
         <div key={lyric.id} className="lyric">
           <p className="lyric-title">{lyric.title}</p>
@@ -64,9 +65,7 @@ export class HomePage extends Component {
         </div>
       );
     });
-  };
 
-  render() {
     return (
       <main className="home-page">
         <div className="home-page-image">
@@ -76,7 +75,7 @@ export class HomePage extends Component {
           Write<span className="home-page-write-btn-icon">+</span>
         </NavLink>
         <section className="home-page-lyrics-wrapper">
-          {this.props.lyrics.length > 0 && this.renderLyrics()}
+          {allLyrics}
         </section>
       </main>
     );
@@ -88,7 +87,7 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch =>
-  bindActionCreators({ setActive, setLyrics }, dispatch);
+  bindActionCreators({ setActive }, dispatch);
 
 export default connect(
   mapStateToProps,
