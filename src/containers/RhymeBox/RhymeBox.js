@@ -14,9 +14,12 @@ export const RhymeBox = ({ rhymes }) => {
 
   return (
     <section className="rhyme-box">
-      <h3>
-        Rhymes for <span>selected</span>
-      </h3>
+      <div>
+        <h3 className="rhyme-title">Rhymes for:</h3>
+        <h3 className="rhyme-selected">
+          {window.getSelection().toString() || "Highlighted"}
+        </h3>
+      </div>
       {allRhymes}
     </section>
   );

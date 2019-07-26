@@ -1,21 +1,14 @@
-// $main-background: #173842;
-// $second-background: #4C7889;
-// $third-background: #4F92A9;
-// $main-accent: #FA3527;
-// $second-accent: #B1E2F0;
-// $third-accent: #F0F9FC;
-// $fourth-accent: #E3A59A;
-
 @import '../../index.scss';
 
 .nav-bar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   background-color: black;
   height: 15vh;
   position: fixed;
   z-index: 100;
   width: 100%;
+  opacity: .8;
 }
 
 .nav-bar-logo {
@@ -30,7 +23,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 20px 40px;
+  padding: 0px 80px;
   width: 20vw;
 }
 

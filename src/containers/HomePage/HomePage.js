@@ -10,11 +10,12 @@ export class HomePage extends Component {
   }
 
   goToWritePage = e => {
-    if (e.target.name === "createNewLyric") {
+    if (e.target.id === "createNewLyric") {
+      console.log('in here?')
       const newLyric = {
         title: "",
         date: new Date().toLocaleDateString("en-US"),
-        id: this.props.lyrics.length,
+        id: this.props.lyrics.length + 1,
         active: true,
         bars: [{ id: 1, text: "" }]
       };
@@ -23,10 +24,11 @@ export class HomePage extends Component {
         JSON.stringify([...this.props.lyrics, newLyric])
       );
       this.props.setLyrics([...this.props.lyrics, newLyric]);
+      this.props.setActive(newLyric.id);
     } else {
       this.props.setActive(parseInt(e.target.id));
-      this.props.history.push(`/write`);
     }
+    this.props.history.push(`/write`);
   };
 
   openLyric = e => {};
@@ -58,14 +60,22 @@ export class HomePage extends Component {
             alt="a DJ on his turntable with a spotlight shining on him and a background of red stage lights"
           />
         </div>
-        <button
-          name="createNewLyric"
-          className="home-page-write-btn"
-          onClick={this.goToWritePage}
-        >
-          Write<span className="home-page-write-btn-icon">+</span>
-        </button>
-        <section className="home-page-lyrics-wrapper">{allLyrics}</section>
+        <section className="home-page-lyrics-wrapper">
+          <div
+            id="createNewLyric"
+            className="home-page-write-btn"
+            onClick={this.goToWritePage}
+          >
+            <p id="createNewLyric">New Lyrics</p>
+            <img
+              id="createNewLyric"
+              className="home-page-write-btn-icon"
+              src="./images/plus.svg"
+            />
+          </div>
+          <h3>Recent Lyrics</h3>
+          {allLyrics}
+        </section>
       </main>
     );
   }

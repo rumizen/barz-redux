@@ -52,7 +52,7 @@ export class WritePage extends Component {
           </form>
         )}
         {activeLyric.title.length > 0 && (
-          <h2 className="lyric-title">{activeLyric.title}</h2>
+          <h2 className="write-page-lyric-title">{activeLyric.title}</h2>
         )}
         {allBars}
       </section>
@@ -65,7 +65,10 @@ export class WritePage extends Component {
     );
     return (
       <main className="write-page">
-        {this.props.lyrics.length > 0 && this.renderBars()}
+        <div className="background-img-wrapper">
+          <img src="./images/twoRappersMed.jpg" alt="two rappers performing intensely on stage" />
+        </div>
+        {this.props.lyrics.length > 0 && activeLyric && this.renderBars()}
         <RhymeBox />
       </main>
     );
