@@ -10,7 +10,6 @@ import { connect } from "react-redux";
 import "./App.scss";
 
 export class App extends Component {
-
   componentDidMount() {
     const lyrics = JSON.parse(localStorage.getItem("lyrics")) || [];
     this.props.setLyrics(lyrics);
@@ -25,16 +24,12 @@ export class App extends Component {
         <Route exact path="/perform" component={PerformPage} />
       </main>
     );
-  }
+  };
 
   render() {
-    return (
-      <>
-        {this.props.lyrics.length > 0 && this.renderApp()}
-      </>
-    )
-  };
-};
+    return <>{this.props.lyrics && this.renderApp()}</>;
+  }
+}
 
 export const mapStateToProps = state => ({
   lyrics: state.lyrics
