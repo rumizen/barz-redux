@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import Bar from '../Bar/Bar';
+// import Bar from '../Bar/Bar';
 import './PerformPage.scss';
 
 export const PerformPage = ({ lyrics }) => {
