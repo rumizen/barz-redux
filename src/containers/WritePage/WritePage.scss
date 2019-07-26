@@ -1,6 +1,8 @@
 @import '../../index.scss';
 
 .write-page {
+  position: relative;
+  top: 15vh;
   display: flex;
   justify-content: space-between;
 }
@@ -8,8 +10,24 @@
 .write-page-bars-wrapper {
   display: flex;
   flex-direction: column;
-  position: relative;
-  top: 15vh;
   width: 77vw;
   margin: 1vh 0vw 0vh 1vw;
+}
+
+
+
+.title-input {
+  height: 4.5vh;
+  margin: 4px;
+  width: 30vw;
+  border: $third-background solid 2px;
+  border-radius: 4px;
+}
+
+.lyric-title {
+  align-self: center;
+  margin: 5px;
+  color: $third-background;
+  font-weight: 700;
+  font-size: 16pt;
 }

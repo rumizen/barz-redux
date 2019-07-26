@@ -29,3 +29,8 @@ export const updateBarActive = (barId, active) => ({
   barId,
   active
 });
+
+export const updateTitle = title => ({
+  type: "UPDATE_TITLE",
+  title
+});

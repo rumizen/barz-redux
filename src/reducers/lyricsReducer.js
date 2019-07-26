@@ -8,6 +8,14 @@ export const lyricsReducer = (state = [], action) => {
           ? { ...lyric, active: true }
           : { ...lyric, active: false };
       });
+    case "UPDATE_TITLE":
+      return state.map(lyric => {
+        if (lyric.active === true) {
+          return { ...lyric, title: action.title };
+        } else {
+          return lyric;
+        }
+      });
     case "UPDATE_LYRICS":
       return state.map(lyric => {
         if (lyric.active === true) {
