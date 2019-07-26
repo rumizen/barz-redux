@@ -18,3 +18,8 @@ export const getRhymes = word => ({
   type: "GET_RHYMES",
   word
 });
+
+export const setLyrics = lyrics => ({
+  type: "SET_LYRICS",
+  lyrics
+});

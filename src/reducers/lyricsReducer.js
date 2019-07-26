@@ -1,5 +1,7 @@
 export const lyricsReducer = (state = [], action) => {
   switch (action.type) {
+    case "SET_LYRICS":
+      return action.lyrics;
     case "SET_ACTIVE":
       return state.map(lyric => {
         return lyric.id === action.id

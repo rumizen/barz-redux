@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getRhymes, updateLyrics, addBar } from "../../actions";
+import { getRhymes, updateLyrics, addBar, setLyrics } from "../../actions";
 import { fetchRhymes } from "../../apiCalls";
 import { bindActionCreators } from "redux";
 import "./Bar.scss";
@@ -17,6 +17,8 @@ export class Bar extends Component {
 
   handleChange = e => {
     this.setState({ text: e.target.value });
+    this.props.updateLyrics(this.state.id, this.state.text);
+    localStorage.setItem('lyrics', JSON.stringify(this.props.lyrics));
   };
 
   handleSelect = async () => {
@@ -50,7 +52,7 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch =>
-  bindActionCreators({ getRhymes, updateLyrics, addBar }, dispatch);
+  bindActionCreators({ getRhymes, updateLyrics, addBar, setLyrics }, dispatch);
 
 export default connect(
   mapStateToProps,

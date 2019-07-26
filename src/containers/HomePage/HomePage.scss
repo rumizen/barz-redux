@@ -13,17 +13,20 @@
   width: 30vw;
   overflow-y: scroll;
   background-color: white;
-  // opacity: .8;
+}
+
+.lyric {
+  display: flex;
+  justify-content: space-between;
+  background-color: $main-background;
 }
 
 .home-page-image {
   position: absolute;
   z-index: -10;
   right: 30vw;
-  // top: 15vh;
   img {
     height: 100vh;
-    // width: 500px;
   }
 }
 

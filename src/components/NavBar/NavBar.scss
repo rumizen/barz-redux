@@ -16,7 +16,6 @@
   position: fixed;
   z-index: 100;
   width: 100%;
-  // opacity: .8;
 }
 
 .nav-bar-logo {
@@ -42,7 +41,7 @@
     color: white;
   }
   &:hover {
-    transform: scale(1.01);
-    opacity: .4;
+    color: $fourth-accent;
+    opacity: .9;
   }
 }

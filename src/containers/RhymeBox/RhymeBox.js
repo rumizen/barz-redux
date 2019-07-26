@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { mapStateToProps } from "../Bar/Bar";
 import './RhymeBox.scss';
 
 export const RhymeBox = ({ rhymes }) => {
