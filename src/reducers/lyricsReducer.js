@@ -1,4 +1,7 @@
-export const lyricsReducer = (state = [], action) => {
+export const lyricsReducer = (
+  state = JSON.parse(localStorage.getItem("lyrics")) || [],
+  action
+) => {
   switch (action.type) {
     case "SET_LYRICS":
       return action.lyrics;
@@ -20,12 +23,14 @@ export const lyricsReducer = (state = [], action) => {
       return state.map(lyric => {
         if (lyric.active === true) {
           const updatedBars = lyric.bars.map(bar => {
-            return bar.id === action.barId ? { ...bar, text: action.text } : bar;
+            return bar.id === action.barId
+              ? { ...bar, text: action.text }
+              : bar;
           });
           return { ...lyric, bars: updatedBars };
         } else {
-          return lyric
-        };
+          return lyric;
+        }
       });
     case "ADD_BAR":
       return state.map(lyric => {
@@ -34,20 +39,22 @@ export const lyricsReducer = (state = [], action) => {
           return lyric;
         } else {
           return lyric;
-        };
+        }
       });
     case "UPDATE_BAR_ACTIVE":
       return state.map(lyric => {
         if (lyric.active === true) {
           const updatedBars = lyric.bars.map(bar => {
-            return bar.id === action.barId ? { ...bar, active: action.active } : bar;
+            return bar.id === action.barId
+              ? { ...bar, active: action.active }
+              : bar;
           });
           return { ...lyric, bars: updatedBars };
         } else {
-          return lyric
-        };
+          return lyric;
+        }
       });
     default:
       return state;
-  };
+  }
 };
