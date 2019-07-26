@@ -30,7 +30,7 @@ export class Bar extends Component {
   render() {
     return (
       <article className="bar-wrapper">
-        <p className="bar-number">#</p>
+        <p className="bar-number">{this.props.number}</p>
         <input
           className="bar-input"
           id={this.state.id}

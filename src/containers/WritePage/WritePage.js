@@ -6,7 +6,7 @@ import './WritePage.scss';
 
 export const WritePage = props => {
   const activeLyric = props.lyrics.find(lyric => lyric.active === true);
-  const allBars = activeLyric.bars.map(bar => <Bar text={bar.text} id={bar.id}/>)
+  const allBars = activeLyric.bars.map((bar, index) => <Bar number={index + 1} text={bar.text} id={bar.id}/>)
 
   return (
     <main className="write-page">

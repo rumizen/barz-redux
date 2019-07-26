@@ -1,0 +1,14 @@
+@import '../../index.scss';
+
+.write-page {
+  display: flex;
+}
+
+.write-page-bars-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 15vh;
+  width: 70vw;
+  margin: 1vh 0vw 0vh 1vw;
+}

@@ -6,6 +6,7 @@
 }
 
 .home-page-lyrics-wrapper {
+  padding: 3px;
   top: 15vh;
   position: relative;
   z-index: 5;
@@ -16,9 +17,18 @@
 }
 
 .lyric {
+  border-radius: 3px;
+  opacity: .8;
   display: flex;
   justify-content: space-between;
-  background-color: $main-background;
+  background-color: $second-background;
+  margin: 0px 0px 2px 0px;
+  padding: 0px 30px;
+  &:hover {
+    cursor: pointer;
+    background-color: $fourth-accent;
+    opacity: .7;
+  }
 }
 
 .home-page-image {
