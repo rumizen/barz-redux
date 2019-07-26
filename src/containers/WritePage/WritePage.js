@@ -11,11 +11,10 @@ export class WritePage extends Component {
     title: ""
   };
 
-  handleKeyDown = e => {
+  handleKeyDown = async e => {
     if (e.keyCode === 13) {
       e.preventDefault();
-      this.props.updateTitle(this.state.title);
-      this.setState({ displayForm: false });
+      await this.props.updateTitle(this.state.title);
       localStorage.setItem("lyrics", JSON.stringify(this.props.lyrics));
     }
   };
@@ -61,6 +60,9 @@ export class WritePage extends Component {
   };
 
   render() {
+    const activeLyric = this.props.lyrics.find(
+      lyric => lyric.active === true
+    );
     return (
       <main className="write-page">
         {this.props.lyrics.length > 0 && this.renderBars()}
