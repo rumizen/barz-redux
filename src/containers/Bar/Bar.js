@@ -48,30 +48,34 @@ export class Bar extends Component {
     return (
       <article className="bar-wrapper">
         <p className="bar-number">{this.props.number}</p>
-        {this.state.active &&
-        <input
-          autoFocus={this.state.active}
-          className="bar-input"
-          id={this.state.id}
-          type="text"
-          name="text"
-          value={this.state.text}
-          onChange={this.handleChange}
-          onSelect={this.handleSelect}
-          onKeyDown={this.handleKeyDown}
-        />}
-        {!this.state.active &&
-        <input
-          autoFocus={this.state.active}
-          className="bar-input"
-          id={this.state.id}
-          type="text"
-          name="text"
-          value={this.state.text}
-          onChange={this.handleChange}
-          onSelect={this.handleSelect}
-          onKeyDown={this.handleKeyDown}
-        />}
+        {this.state.active && (
+          <input
+            autoComplete="off"
+            autoFocus={this.state.active}
+            className="bar-input"
+            id={this.state.id}
+            type="text"
+            name="text"
+            value={this.state.text}
+            onChange={this.handleChange}
+            onSelect={this.handleSelect}
+            onKeyDown={this.handleKeyDown}
+          />
+        )}
+        {!this.state.active && (
+          <input
+            autoComplete="off"
+            autoFocus={this.state.active}
+            className="bar-input"
+            id={this.state.id}
+            type="text"
+            name="text"
+            value={this.state.text}
+            onChange={this.handleChange}
+            onSelect={this.handleSelect}
+            onKeyDown={this.handleKeyDown}
+          />
+        )}
         <button className="bar-close">X</button>
       </article>
     );
