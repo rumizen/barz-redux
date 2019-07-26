@@ -29,5 +29,9 @@
     font-size: 12pt;
     font-weight: 700;
     padding-right: 1vw;
+    &:hover {
+      cursor: pointer;
+      color: $fourth-accent;
+    }
   }
 }

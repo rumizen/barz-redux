@@ -11,9 +11,10 @@ export const lyricsReducer = (state = [], action) => {
     case "UPDATE_LYRICS":
       return state.map(lyric => {
         if (lyric.active === true) {
-          return lyric.bars.map(bar => {
+          const updatedBars = lyric.bars.map(bar => {
             return bar.id === action.barId ? { ...bar, text: action.text } : bar;
           });
+          return { ...lyric, bars: updatedBars };
         } else {
           return lyric
         };

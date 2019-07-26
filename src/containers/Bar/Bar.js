@@ -12,13 +12,13 @@ export class Bar extends Component {
   };
 
   componentDidMount() {
-    this.setState({ text: this.props.text })
+    this.setState({ text: this.props.text, id: this.props.id });
   }
 
   handleChange = e => {
     this.setState({ text: e.target.value });
     this.props.updateLyrics(this.state.id, this.state.text);
-    localStorage.setItem('lyrics', JSON.stringify(this.props.lyrics));
+    // localStorage.setItem('lyrics', JSON.stringify(this.props.lyrics));
   };
 
   handleSelect = async () => {
