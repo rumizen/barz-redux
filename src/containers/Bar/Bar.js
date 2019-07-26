@@ -22,25 +22,24 @@ export class Bar extends Component {
     const { id, text, active } = this.props;
     this.setState({ text, id, active });
   }
-
+  
   handleChange = e => {
-    const { id, text } = this.props;
+    const { id, text } = this.state;
     this.setState({ text: e.target.value });
     this.props.updateLyrics(id, text);
-    // localStorage.setItem('lyrics', JSON.stringify(this.props.lyrics));
+    localStorage.setItem('lyrics', JSON.stringify(this.props.lyrics));
   };
-
+  
   handleSelect = async () => {
     const selection = window.getSelection().toString();
     const word = await fetchRhymes(selection);
     this.props.getRhymes(word);
   };
-
+  
   handleKeyDown = e => {
     if (e.keyCode === 13) {
       e.preventDefault();
       this.props.updateBarActive(this.state.id, false);
-      this.setState({ active: false });
       this.props.addBar({ id: this.state.id + 1, text: "", active: true });
     }
   }
