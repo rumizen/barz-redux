@@ -17,7 +17,7 @@ export const RhymeBox = ({ rhymes }) => {
       <div>
         <h3 className="rhyme-title">Rhymes for:</h3>
         <h3 className="rhyme-selected">
-          {window.getSelection().toString() || "Highlighted"}
+          {window.getSelection().toString() || "Highlight a word"}
         </h3>
       </div>
       {allRhymes}

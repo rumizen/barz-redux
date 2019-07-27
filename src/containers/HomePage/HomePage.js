@@ -30,9 +30,7 @@ export class HomePage extends Component {
     }
     this.props.history.push(`/write`);
   };
-
-  openLyric = e => {};
-
+  
   render() {
     const allLyrics = this.props.lyrics.map(lyric => {
       return (
@@ -50,7 +48,7 @@ export class HomePage extends Component {
           </p>
         </div>
       );
-    });
+    }).reverse();
 
     return (
       <main className="home-page">
@@ -60,7 +58,6 @@ export class HomePage extends Component {
             alt="a DJ on his turntable with a spotlight shining on him and a background of red stage lights"
           />
         </div>
-        <section className="home-page-lyrics-wrapper">
           <div
             id="createNewLyric"
             className="home-page-write-btn"
@@ -73,7 +70,8 @@ export class HomePage extends Component {
               src="./images/plus.svg"
             />
           </div>
-          <h3>Recent Lyrics</h3>
+          <h3 className="recent-lyrics">Recent Lyrics</h3>
+        <section className="home-page-lyrics-wrapper">
           {allLyrics}
         </section>
       </main>
