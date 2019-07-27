@@ -23,10 +23,9 @@ export class Bar extends Component {
     this.setState({ text, id, active });
   }
   
-  handleChange = e => {
-    const { id, text } = this.state;
-    this.setState({ text: e.target.value });
-    this.props.updateLyrics(id, text);
+  handleChange = async e => {
+    await this.setState({ text: e.target.value });
+    this.props.updateLyrics(this.state.id, this.state.text);
     localStorage.setItem('lyrics', JSON.stringify(this.props.lyrics));
   };
   

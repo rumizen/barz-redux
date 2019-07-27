@@ -1,9 +1,8 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import './NavBar.scss';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "./NavBar.scss";
 
 export const NavBar = () => {
-
   return (
     <header className="nav-bar">
       <img
@@ -12,24 +11,22 @@ export const NavBar = () => {
         alt="bars logo"
       />
       <nav className="nav-bar-links-wrapper">
-        <NavLink
-          activeClassName="active"
-          className="nav-bar-link"
-          exact to="/"
-        >
+        <NavLink activeClassName="active" className="nav-bar-link" exact to="/">
           Home
         </NavLink>
         <NavLink
           activeClassName="active"
           className="nav-bar-link"
-          exact to="/write"
+          exact
+          to="/write"
         >
           Write
         </NavLink>
         <NavLink
           activeClassName="active"
           className="nav-bar-link"
-          exact to="/perform"
+          exact
+          to="/perform"
         >
           Perform
         </NavLink>

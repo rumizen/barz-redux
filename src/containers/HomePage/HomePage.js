@@ -68,6 +68,7 @@ export class HomePage extends Component {
               id="createNewLyric"
               className="home-page-write-btn-icon"
               src="./images/plus.svg"
+              alt="plus sign icon"
             />
           </div>
           <h3 className="recent-lyrics">Recent Lyrics</h3>
