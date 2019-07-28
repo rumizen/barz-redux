@@ -22,6 +22,10 @@
   border-radius: 4px;
 }
 
+.home-page-lyrics-wrapper::-webkit-scrollbar { 
+  width: 0 !important; 
+}
+
 .recent-lyrics {
   top: 28vh;
   right: 13.5vw;

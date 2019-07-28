@@ -13,22 +13,24 @@
   background-color: white;
   opacity: .7;
   border-radius: 4px 0px 0px 4px;
+  border-left: solid black 2px;
   padding: 5px;
   padding-top: 90px;
   div {
+    border-top: solid black 2px;
+    border-left: solid black 1px;
     opacity: .9;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 4px 0px 0px 0px;
-    width: 20vw;
+    width: 20.1vw;
     padding: 0px 5px 0px 5px;
-    background-color: $third-background;
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 100%);
     position: fixed;
     top: 16.4vh;
     margin: 5px 0px 0px 0px;
     align-self: center;
-    // border-bottom: solid 2px black;
     .rhyme-selected {
       margin: 5px 0px 10px 0px;
       color: $main-accent;
@@ -38,6 +40,10 @@
       margin: 15px 0px 0px 0px;
     }
   }
+}
+
+.rhyme-box::-webkit-scrollbar { 
+  width: 0 !important;
 }
 
 .rhyme-word {

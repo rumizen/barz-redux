@@ -11,7 +11,12 @@ export const NavBar = () => {
         alt="bars logo"
       />
       <nav className="nav-bar-links-wrapper">
-        <NavLink activeClassName="active" className="nav-bar-link" exact to="/">
+        <NavLink
+          activeClassName="active"
+          className="nav-bar-link"
+          exact
+          to="/"
+        >
           Home
         </NavLink>
         <NavLink
@@ -22,13 +27,21 @@ export const NavBar = () => {
         >
           Write
         </NavLink>
-        <NavLink
+        {/* <NavLink
           activeClassName="active"
           className="nav-bar-link"
           exact
           to="/perform"
         >
           Perform
+        </NavLink> */}
+        <NavLink
+          activeClassName="active"
+          className="nav-bar-link"
+          exact
+          to="/help"
+        >
+          Help
         </NavLink>
       </nav>
     </header>
