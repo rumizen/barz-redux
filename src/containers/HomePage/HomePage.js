@@ -11,13 +11,12 @@ export class HomePage extends Component {
 
   goToWritePage = e => {
     if (e.target.id === "createNewLyric") {
-      console.log('in here?')
       const newLyric = {
         title: "",
         date: new Date().toLocaleDateString("en-US"),
         id: this.props.lyrics.length + 1,
         active: true,
-        bars: [{ id: 1, text: "" }]
+        bars: [{ id: Date.now(), text: "" }]
       };
       localStorage.setItem(
         "lyrics",

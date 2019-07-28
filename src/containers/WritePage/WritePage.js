@@ -31,11 +31,10 @@ export class WritePage extends Component {
   }
 
   editTitle = () => {
-    console.log(this.state.title)
     this.setState({ editTitle: true });
   }
 
-  renderBars = () => {
+    renderBars = () => {
     const activeLyric = this.props.lyrics.find(lyric => lyric.active === true);
     const allBars = activeLyric.bars.map((bar, index) => {
       return (

@@ -5,7 +5,8 @@ import {
   updateLyrics,
   addBar,
   setLyrics,
-  updateBarActive
+  updateBarActive,
+  deleteBar
 } from "../../actions";
 import { fetchRhymes } from "../../apiCalls";
 import { bindActionCreators } from "redux";
@@ -22,26 +23,35 @@ export class Bar extends Component {
     const { id, text, active } = this.props;
     this.setState({ text, id, active });
   }
-  
+
   handleChange = async e => {
     await this.setState({ text: e.target.value });
     this.props.updateLyrics(this.state.id, this.state.text);
-    localStorage.setItem('lyrics', JSON.stringify(this.props.lyrics));
+    localStorage.setItem("lyrics", JSON.stringify(this.props.lyrics));
   };
-  
+
   handleSelect = async () => {
     const selection = window.getSelection().toString();
     const word = await fetchRhymes(selection);
     this.props.getRhymes(word);
   };
-  
+
   handleKeyDown = e => {
     if (e.keyCode === 13) {
       e.preventDefault();
       this.props.updateBarActive(this.state.id, false);
-      this.props.addBar({ id: this.state.id + 1, text: "", active: true });
+      this.props.addBar({
+        id: Date.now(),
+        text: "",
+        active: true
+      });
     }
-  }
+  };
+
+  deleteBar = async () => {
+    await this.props.deleteBar(this.state.id);
+    await localStorage.setItem("lyrics", JSON.stringify(this.props.lyrics));
+  };
 
   render() {
     return (
@@ -75,7 +85,9 @@ export class Bar extends Component {
             onKeyDown={this.handleKeyDown}
           />
         )}
-        <button className="bar-close">X</button>
+        <button className="bar-close" onClick={this.deleteBar}>
+          X
+        </button>
       </article>
     );
   }
@@ -87,7 +99,10 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch =>
-  bindActionCreators({ getRhymes, updateLyrics, addBar, setLyrics, updateBarActive }, dispatch);
+  bindActionCreators(
+    { getRhymes, updateLyrics, addBar, setLyrics, updateBarActive, deleteBar },
+    dispatch
+  );
 
 export default connect(
   mapStateToProps,

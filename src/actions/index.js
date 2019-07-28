@@ -34,3 +34,8 @@ export const updateTitle = title => ({
   type: "UPDATE_TITLE",
   title
 });
+
+export const deleteBar = id => ({
+  type: "DELETE_BAR",
+  id
+});
