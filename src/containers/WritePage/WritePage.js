@@ -8,14 +8,21 @@ import "./WritePage.scss";
 
 export class WritePage extends Component {
   state = {
-    title: ""
+    title: "",
+    editTitle: false
   };
+
+  componentDidMount() {
+    const activeLyric = this.props.lyrics.find(lyric => lyric.active === true);
+    this.setState({ title: activeLyric.title, editTitle: !(activeLyric.title.length > 0)});
+  }
 
   handleKeyDown = async e => {
     if (e.keyCode === 13) {
       e.preventDefault();
       await this.props.updateTitle(this.state.title);
       localStorage.setItem("lyrics", JSON.stringify(this.props.lyrics));
+      this.setState({ editTitle: false })
     }
   };
 
@@ -23,7 +30,11 @@ export class WritePage extends Component {
     this.setState({ title: e.target.value });
   }
 
-  renderBars = () => {
+  editTitle = () => {
+    this.setState({ editTitle: true });
+  }
+
+    renderBars = () => {
     const activeLyric = this.props.lyrics.find(lyric => lyric.active === true);
     const allBars = activeLyric.bars.map((bar, index) => {
       return (
@@ -38,9 +49,10 @@ export class WritePage extends Component {
     });
     return (
       <section className="write-page-bars-wrapper">
-        {!(activeLyric.title.length > 0) && (
+        {this.state.editTitle && (
           <form className="title-form">
             <input
+              autoFocus={true}
               type="text"
               name="title"
               value={this.state.title}
@@ -51,8 +63,10 @@ export class WritePage extends Component {
             />
           </form>
         )}
-        {activeLyric.title.length > 0 && (
-          <h2 className="write-page-lyric-title">{activeLyric.title}</h2>
+        {!this.state.editTitle && (
+          <h2 className="write-page-lyric-title" onClick={this.editTitle}>
+            {activeLyric.title}
+          </h2>
         )}
         {allBars}
       </section>

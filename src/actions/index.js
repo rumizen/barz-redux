@@ -9,6 +9,11 @@ export const updateLyrics = (barId, text) => ({
   text
 });
 
+export const deleteLyric = id => ({
+  type: "DELETE_LYRIC",
+  id
+});
+
 export const addBar = newBar => ({
   type: "ADD_BAR",
   newBar
@@ -33,4 +38,9 @@ export const updateBarActive = (barId, active) => ({
 export const updateTitle = title => ({
   type: "UPDATE_TITLE",
   title
+});
+
+export const deleteBar = id => ({
+  type: "DELETE_BAR",
+  id
 });

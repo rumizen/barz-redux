@@ -54,6 +54,21 @@ export const lyricsReducer = (
           return lyric;
         }
       });
+    case "DELETE_BAR":
+      return state.map(lyric => {
+        if (lyric.active === true) {
+          const updatedBars = lyric.bars.filter(bar => {
+            return bar.id !== action.id
+          });
+          return { ...lyric, bars: updatedBars };
+        } else {
+          return lyric;
+        }
+      });
+    case "DELETE_LYRIC":
+      return state.filter(lyric => {
+        return lyric.id !== action.id;
+      });
     default:
       return state;
   }
