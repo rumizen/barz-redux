@@ -65,6 +65,10 @@ export const lyricsReducer = (
           return lyric;
         }
       });
+    case "DELETE_LYRIC":
+      return state.filter(lyric => {
+        return lyric.id !== action.id;
+      });
     default:
       return state;
   }
