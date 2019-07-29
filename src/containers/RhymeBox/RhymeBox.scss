@@ -16,7 +16,7 @@
   border-left: solid black 2px;
   padding: 5px;
   padding-top: 90px;
-  div {
+  .rhyme-box-title {
     border-top: solid black 2px;
     border-left: solid black 1px;
     opacity: .9;
@@ -44,21 +44,5 @@
 
 .rhyme-box::-webkit-scrollbar { 
   width: 0 !important;
-}
-
-.rhyme-word {
-  border: 2px solid black;
-  font-size: 12pt;
-  display: flex;
-  align-items: center;
-  margin: 1px;
-  border-radius: 3px;
-  padding: 10px;
-  &:hover {
-    cursor: pointer;
-    opacity: .8;
-    background-color: $third-background;
-    color: white;
-  }
 }
 
