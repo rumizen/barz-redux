@@ -32,7 +32,6 @@ export class Lyric extends Component {
     await this.props.deleteLyric(parseInt(e.target.id));
     await this.props.setDefaultActive();
     localStorage.setItem("lyrics", JSON.stringify(this.props.lyrics));
-    console.log(this.props.lyrics)
   };
 
   render() {
@@ -57,12 +56,21 @@ export class Lyric extends Component {
           </button>
         )}
         {this.state.deleteWindow && (
-          <div>
-            <p>Delete?</p>
-            <button id={this.props.id} onClick={this.deleteLyric}>
+          <div className="delete-confirm-wrapper">
+            <p id={this.props.id}>Delete?</p>
+            <button
+              className="delete-confrim-yes"
+              id={this.props.id}
+              onClick={this.deleteLyric}
+            >
               Yes
             </button>
-            <button onClick={this.deleteWindow}>No</button>
+            <button
+              className="delete-confrim-no"
+              onClick={this.deleteWindow}
+            >
+              No
+            </button>
           </div>
         )}
       </div>
