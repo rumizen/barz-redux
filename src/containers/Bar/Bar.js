@@ -31,6 +31,7 @@ export class Bar extends Component {
   };
 
   handleSelect = async () => {
+    console.log(window.getSelection().toString());
     const selection = window.getSelection().toString();
     const word = await fetchRhymes(selection);
     this.props.getRhymes(word);

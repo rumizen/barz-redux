@@ -1,30 +1,27 @@
-import React from "react";
-import { connect } from 'react-redux';
-import './RhymeBox.scss';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import "./RhymeBox.scss";
+import RhymeWord from '../../components/RhymeWord/RhymeWord';
 
-export const RhymeBox = ({ rhymes }) => {
+export class RhymeBox extends Component {
 
-  const allRhymes = rhymes.map(rhyme => {
+  render() {
+    const allRhymes = this.props.rhymes.map(rhyme => {
+      return <RhymeWord key={Math.random()} text={rhyme.word} />;
+    });
     return (
-      <p className="rhyme-word" key={Math.random()}>
-        {rhyme.word}
-      </p>
+      <section className="rhyme-box">
+        <div className="rhyme-box-title">
+          <h3 className="rhyme-title">Rhymes for:</h3>
+          <h3 className="rhyme-selected">
+            {window.getSelection().toString() || "Highlight a word"}
+          </h3>
+        </div>
+        {allRhymes}
+      </section>
     );
-  });
-
-  return (
-    <section className="rhyme-box">
-      <div>
-        <h3 className="rhyme-title">Rhymes for:</h3>
-        <h3 className="rhyme-selected">
-          {window.getSelection().toString() || "Highlight a word"}
-        </h3>
-      </div>
-      {allRhymes}
-    </section>
-  );
-};
-
+  }
+}
 
 export const mapStateToProps = state => ({
   rhymes: state.rhymes
