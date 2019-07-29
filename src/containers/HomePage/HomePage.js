@@ -6,6 +6,7 @@ import Lyric from "../Lyric/Lyric";
 import "./HomePage.scss";
 
 export class HomePage extends Component {
+
   componentDidMount() {
     localStorage.setItem("lyrics", JSON.stringify(this.props.lyrics));
   }
@@ -60,7 +61,9 @@ export class HomePage extends Component {
           />
         </div>
         <h3 className="recent-lyrics">Recent Lyrics</h3>
-        <section className="home-page-lyrics-wrapper">{allLyrics}</section>
+        <section className="home-page-lyrics-wrapper">
+        {allLyrics}
+        </section>
       </main>
     );
   }
