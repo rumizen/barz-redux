@@ -6,7 +6,6 @@ import { createStore } from "redux";
 import { rootReducer } from "./reducers";
 import "./index.scss";
 import App from "./components/App/App";
-import * as serviceWorker from "./serviceWorker";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 const store = createStore(rootReducer, composeWithDevTools());
@@ -20,4 +19,3 @@ const application = (
 );
 
 ReactDOM.render(application, document.getElementById("root"));
-serviceWorker.unregister();
