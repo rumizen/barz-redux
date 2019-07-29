@@ -60,7 +60,9 @@ export const lyricsReducer = (
           const updatedBars = lyric.bars.filter(bar => {
             return bar.id !== action.id;
           });
-          return { ...lyric, bars: updatedBars };
+          return updatedBars.length > 0
+            ? { ...lyric, bars: updatedBars }
+            : { ...lyric, bars: [{ text: "", id: Date.now(), active: true }]};
         } else {
           return lyric;
         }
