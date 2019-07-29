@@ -8,7 +8,6 @@
   align-items: center;
   background-color: white;
   margin: 0px 0px 2px 0px;
-  padding: 0px 10px;
   width: 85%;
   border: solid black 2px;
   &:hover {
@@ -21,13 +20,13 @@
 
 .lyric-title {
   font-weight: 700;
-  margin: 10px 0px 0px 0px;
+  margin: 10px 0px 0px 15px;
 }
 
 .lyric-date {
   opacity: .7;
   font-size: .7rem;
-  margin-bottom: 8px;
+  margin: 5px 0px 10px 15px;
 }
 
 .home-page-image {
@@ -41,12 +40,49 @@
 .delete-btn {
   display: flex;
   justify-content: center;
-  height: 80%;
+  height: 100%;
   width: 3vw;
   outline: none;
-  border: solid 2px red;
-  border-radius: 4px;
+  border: none;
   margin: 0;
   font-size: 1rem;
   font-weight: 700;
+  &:hover {
+    background-color: white;
+    cursor: pointer;
+    background-color: $main-accent;
+    opacity: .7;
+    color: white;
+  }
+}
+
+.delete-confirm-wrapper {
+  height: 100%;
+  font-size: .8rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $main-accent;
+  transform: scaleX(1);
+  overflow: hidden;
+  transition: transform 0.3s ease-out;
+  width: auto;
+  transform-origin: right;
+  p {
+    padding: 0px 10px;
+  }
+  button {
+    height: 100%;
+    font-weight: 700;
+    background-color: $main-accent;
+    border: none;
+    outline: none;
+    &:hover {
+      background-color: white;
+      opacity: .7;
+      cursor: pointer;
+
+    }
+  }
 }
