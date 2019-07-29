@@ -58,7 +58,7 @@ export const lyricsReducer = (
       return state.map(lyric => {
         if (lyric.active === true) {
           const updatedBars = lyric.bars.filter(bar => {
-            return bar.id !== action.id
+            return bar.id !== action.id;
           });
           return { ...lyric, bars: updatedBars };
         } else {
@@ -66,9 +66,27 @@ export const lyricsReducer = (
         }
       });
     case "DELETE_LYRIC":
-      return state.filter(lyric => {
-        return lyric.id !== action.id;
-      });
+      return state.filter(lyric => lyric.id !== action.id);
+    case "SET_DEFAULT_ACTIVE":
+      if (state.length > 0) {
+        return state.map((lyric, index, array) => {
+          if (index === array.length - 1) {
+            return { ...lyric, active: true };
+          } else {
+            return lyric;
+          }
+        });
+      } else {
+        return [
+          {
+            title: "",
+            date: new Date().toLocaleDateString("en-US"),
+            id: Date.now(),
+            active: true,
+            bars: [{ id: Date.now(), text: "" }]
+          }
+        ];
+      }
     default:
       return state;
   }

@@ -44,3 +44,7 @@ export const deleteBar = id => ({
   type: "DELETE_BAR",
   id
 });
+
+export const setDefaultActive = () => ({
+  type: "SET_DEFAULT_ACTIVE"
+});
