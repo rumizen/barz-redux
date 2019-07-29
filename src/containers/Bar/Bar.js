@@ -19,6 +19,18 @@ export class Bar extends Component {
     active: false
   };
 
+  componentWillReceiveProps(nextProps){
+    if(nextProps.text !== this.props.text) {
+      this.setState({ text: nextProps.text });
+    }
+    if(nextProps.id !== this.props.id) {
+      this.setState({ id: nextProps.id });
+    }
+    if(nextProps.active !== this.props.active) {
+      this.setState({ active: nextProps.active });
+    }
+  };
+
   componentDidMount() {
     const { id, text, active } = this.props;
     this.setState({ text, id, active });
@@ -31,7 +43,6 @@ export class Bar extends Component {
   };
 
   handleSelect = async () => {
-    console.log(window.getSelection().toString());
     const selection = window.getSelection().toString();
     const word = await fetchRhymes(selection);
     this.props.getRhymes(word);
