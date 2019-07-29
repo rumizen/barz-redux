@@ -14,11 +14,17 @@
   opacity: .8;
 }
 
-.nav-bar-logo {
+.nav-bar-logo-wrapper {
   position: relative;
   z-index: 1;
+  margin: 7px 0px 0px 15px;
+}
+
+.nav-bar-logo {
+  // position: relative;
+  // z-index: 1;
   height: 13vh;
-  margin: 7px 0px 0px 13px;
+  margin: 0;
   padding: 0;
 }
 
