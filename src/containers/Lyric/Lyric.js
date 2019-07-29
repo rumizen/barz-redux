@@ -5,7 +5,6 @@ import "./Lyric.scss";
 import {
   deleteLyric,
   setActive,
-  setLyrics,
   setDefaultActive
 } from "../../actions";
 import { bindActionCreators } from "redux";
@@ -84,7 +83,7 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(
-    { deleteLyric, setActive, setLyrics, setDefaultActive },
+    { deleteLyric, setActive, setDefaultActive },
     dispatch
   );
 

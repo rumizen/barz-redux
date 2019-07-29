@@ -15,12 +15,16 @@ describe("Bar", () => {
   let instance;
 
   beforeEach(() => {
-    wrapper = shallow(<Bar />);
+    wrapper = shallow(<Bar text="" id={0} active={false} />);
     instance = wrapper.instance();
   });
 
   it("should match the snapshot", () => {
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it("should have default state", () => {
+    expect(instance.state).toEqual({ text: "", id: 0, active: false });
   });
 
   describe("mapStateToProps", () => {

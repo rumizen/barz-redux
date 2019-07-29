@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setActive, setLyrics, deleteLyric } from "../../actions";
+import { setActive, setLyrics } from "../../actions";
 import { bindActionCreators } from "redux";
 import Lyric from "../Lyric/Lyric";
 import "./HomePage.scss";
@@ -14,7 +14,7 @@ export class HomePage extends Component {
   goToWritePage = e => {
     const newLyric = {
       title: "",
-      date: new Date().toLocaleDateString("en-US"),
+      date: new Date().toLocaleDateString("en-US"), 
       id: Date.now(),
       active: true,
       bars: [{ id: Date.now(), text: "" }]
@@ -74,7 +74,7 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch =>
-  bindActionCreators({ setActive, setLyrics, deleteLyric }, dispatch);
+  bindActionCreators({ setActive, setLyrics }, dispatch);
 
 export default connect(
   mapStateToProps,
