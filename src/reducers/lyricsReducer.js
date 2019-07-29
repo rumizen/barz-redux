@@ -81,7 +81,7 @@ export const lyricsReducer = (
       } else {
         return [
           {
-            title: "",
+            title: "Start writing",
             date: new Date().toLocaleDateString("en-US"),
             id: Date.now(),
             active: true,
