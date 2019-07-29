@@ -4,7 +4,6 @@ import {
   getRhymes,
   updateLyrics,
   addBar,
-  setLyrics,
   updateBarActive,
   deleteBar
 } from "../../actions";
@@ -112,7 +111,7 @@ export const mapStateToProps = state => ({
 
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(
-    { getRhymes, updateLyrics, addBar, setLyrics, updateBarActive, deleteBar },
+    { getRhymes, updateLyrics, addBar, updateBarActive, deleteBar },
     dispatch
   );
 
