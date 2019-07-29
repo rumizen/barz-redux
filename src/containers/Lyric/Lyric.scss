@@ -1,0 +1,52 @@
+@import '../../index.scss';
+
+.lyric {
+  border-radius: 3px;
+  opacity: .8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  margin: 0px 0px 2px 0px;
+  padding: 0px 10px;
+  width: 85%;
+  border: solid black 2px;
+  &:hover {
+    cursor: pointer;
+    background-color: $third-background;
+    opacity: .7;
+    color: white;
+  }
+}
+
+.lyric-title {
+  font-weight: 700;
+  margin: 10px 0px 0px 0px;
+}
+
+.lyric-date {
+  opacity: .7;
+  font-size: .7rem;
+  margin-bottom: 8px;
+}
+
+.home-page-image {
+  position: absolute;
+  z-index: -10;
+  img {
+    width: 100vw;
+  }
+}
+
+.delete-btn {
+  display: flex;
+  justify-content: center;
+  height: 80%;
+  width: 3vw;
+  outline: none;
+  border: solid 2px red;
+  border-radius: 4px;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}

@@ -86,7 +86,7 @@ export class Bar extends Component {
           />
         )}
         <button className="bar-close" onClick={this.deleteBar}>
-          x
+          &#x2715;
         </button>
       </article>
     );

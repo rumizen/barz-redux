@@ -2,81 +2,41 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setActive, setLyrics, deleteLyric } from "../../actions";
 import { bindActionCreators } from "redux";
+import Lyric from "../Lyric/Lyric";
 import "./HomePage.scss";
 
 export class HomePage extends Component {
-  state = {
-    deleteWindow: false
-  };
-
   componentDidMount() {
     localStorage.setItem("lyrics", JSON.stringify(this.props.lyrics));
   }
 
   goToWritePage = e => {
-    if (e.target.id === "createNewLyric") {
-      const newLyric = {
-        title: "",
-        date: new Date().toLocaleDateString("en-US"),
-        id: this.props.lyrics.length + 1,
-        active: true,
-        bars: [{ id: Date.now(), text: "" }]
-      };
-      localStorage.setItem(
-        "lyrics",
-        JSON.stringify([...this.props.lyrics, newLyric])
-      );
-      this.props.setLyrics([...this.props.lyrics, newLyric]);
-      this.props.setActive(newLyric.id);
-    } else {
-      this.props.setActive(parseInt(e.target.id));
-    }
+    const newLyric = {
+      title: "",
+      date: new Date().toLocaleDateString("en-US"),
+      id: Date.now(),
+      active: true,
+      bars: [{ id: Date.now(), text: "" }]
+    };
+    localStorage.setItem(
+      "lyrics",
+      JSON.stringify([...this.props.lyrics, newLyric])
+    );
+    this.props.setLyrics([...this.props.lyrics, newLyric]);
+    this.props.setActive(newLyric.id);
     this.props.history.push(`/write`);
-  };
-
-  deleteWindow = e => {
-    e.stopPropagation();
-    this.setState({ deleteWindow: !this.state.deleteWindow });
-  };
-
-  deleteLyric = async e => {
-    e.stopPropagation();
-    await this.props.deleteLyric(parseInt(e.target.id));
-    localStorage.setItem("lyrics", JSON.stringify(this.props.lyrics));
   };
 
   render() {
     const allLyrics = this.props.lyrics
-      .map(lyric => {
-        return (
-          <div
-            id={lyric.id}
-            key={lyric.id}
-            className="lyric"
-            onClick={this.goToWritePage}
-          >
-            <p id={lyric.id} className="lyric-title">
-              {lyric.title}
-            </p>
-            <p id={lyric.id} className="lyric-date">
-              {lyric.date}
-            </p>
-            {this.state.deleteWindow === false && (
-              <button onClick={this.deleteWindow}>x</button>
-            )}
-            {this.state.deleteWindow && (
-              <div>
-                <p>Delete?</p>
-                <button id={lyric.id} onClick={this.deleteLyric}>
-                  Yes
-                </button>
-                <button onClick={this.deleteWindow}>No</button>
-              </div>
-            )}
-          </div>
-        );
-      })
-      .reverse();
+      .map(lyric => (
+        <Lyric
+          key={lyric.id}
+          id={lyric.id}
+          title={lyric.title}
+          date={lyric.date}
+        />
+      )).reverse();
 
     return (
       <main className="home-page">

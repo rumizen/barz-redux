@@ -36,43 +36,6 @@
   align-self: center;
 }
 
-.lyric {
-  border-radius: 3px;
-  opacity: .8;
-  display: flex;
-  justify-content: space-between;
-  background-color: white;
-  margin: 0px 0px 2px 0px;
-  padding: 0px 30px;
-  width: 85%;
-  border: solid black 2px;
-  &:hover {
-    cursor: pointer;
-    background-color: $third-background;
-    opacity: .7;
-    color: white;
-  }
-}
-
-.lyric-title {
-  // color: white;
-  font-weight: 700;
-
-}
-
-.lyric-date {
-  // color: white;
-  opacity: .7;
-}
-
-.home-page-image {
-  position: absolute;
-  z-index: -10;
-  img {
-    width: 100vw;
-  }
-}
-
 .home-page-write-btn {
   top: 22vh;
   right: 9.5vw;
