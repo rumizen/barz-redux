@@ -33,10 +33,5 @@ export const mapStateToProps = state => ({
   lyrics: state.lyrics
 });
 
-export const mapDispatchToProps = dispatch =>
-  bindActionCreators({ setLyrics }, dispatch);
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+  mapStateToProps)(App);
