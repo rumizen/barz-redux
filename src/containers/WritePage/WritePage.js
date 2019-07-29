@@ -52,6 +52,7 @@ export class WritePage extends Component {
         {this.state.editTitle && (
           <form className="title-form">
             <input
+              autoComplete="off"
               autoFocus={true}
               type="text"
               name="title"
