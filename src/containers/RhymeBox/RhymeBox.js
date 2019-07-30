@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./RhymeBox.scss";
 import RhymeWord from '../../components/RhymeWord/RhymeWord';
+import PropTypes from "prop-types";
+
 
 export class RhymeBox extends Component {
 
@@ -21,10 +23,14 @@ export class RhymeBox extends Component {
       </section>
     );
   }
+};
+
+RhymeBox.propTypes = {
+  rhymes: PropTypes.array,
 }
 
 export const mapStateToProps = state => ({
   rhymes: state.rhymes
 });
 
-export default connect(mapStateToProps)(RhymeBox);
+export default connect(mapStateToProps)(RhymeBox); 

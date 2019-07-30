@@ -39,6 +39,10 @@
   box-shadow: 10px 10px 28px -14px rgba(77,77,77,1);
 }
 
+.help-page::-webkit-scrollbar { 
+  width: 0 !important; 
+}
+
 .help-page-article {
   display: flex;
   flex-direction: column;

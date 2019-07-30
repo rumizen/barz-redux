@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './RhymeWord.scss';
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import PropTypes from "prop-types";
 
 export class RhymeWord extends Component {
   state = {
@@ -22,5 +23,9 @@ export class RhymeWord extends Component {
     );
   }
 };
+
+RhymeWord.propTypes = {
+  text: PropTypes.string
+}
 
 export default RhymeWord;

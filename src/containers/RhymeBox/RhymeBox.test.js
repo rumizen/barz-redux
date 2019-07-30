@@ -16,7 +16,7 @@ describe("RhymeBox", () => {
       return "MockSelection";
     }
     expect(wrapper).toMatchSnapshot();
-  });
+  }); 
 
   describe("mapStateToProps", () => {
     it.skip("should return an array of lyrics objects", () => {

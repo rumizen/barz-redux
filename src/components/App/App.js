@@ -6,6 +6,7 @@ import WritePage from "../../containers/WritePage/WritePage";
 import HelpPage from "../../components/HelpPage/HelpPage";
 import { connect } from "react-redux";
 import "./App.scss";
+import PropTypes from "prop-types";
 
 export class App extends Component {
 
@@ -24,6 +25,10 @@ export class App extends Component {
     return <>{this.props.lyrics && this.renderApp()}</>;
   }
 };
+
+App.propTypes = {
+  lyrics: PropTypes.array
+}
 
 export const mapStateToProps = state => ({
   lyrics: state.lyrics

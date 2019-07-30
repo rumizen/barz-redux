@@ -5,6 +5,8 @@ import { bindActionCreators } from "redux";
 import Bar from "../Bar/Bar";
 import RhymeBox from "../RhymeBox/RhymeBox";
 import "./WritePage.scss";
+import PropTypes from "prop-types";
+
 
 export class WritePage extends Component {
   state = {
@@ -88,6 +90,12 @@ export class WritePage extends Component {
       </main>
     );
   }
+};
+
+WritePage.propTypes = {
+  lyrics: PropTypes.array,
+  updateTitle: PropTypes.func,
+  
 }
 
 export const mapStateToProps = state => ({

@@ -7,7 +7,7 @@ const HelpPage = () => {
       <img
         className="help-page-img"
         src="./images/silhouette.jpg"
-        alt="black and white photo of rapper on stage"
+        alt="black and white scene of rapper on stage"
       />
       <section className="help-page">
         <h2 className="help-page-title">Learn to use Barz</h2>
@@ -17,7 +17,10 @@ const HelpPage = () => {
             On the Home page, click the "Create New" button to open a fresh
             canvas for writing new lyrics.
           </p>
-          <img src="./images/create-new.gif" />
+          <img
+            src="./images/create-new.gif"
+            alt="demonstration of how to create a new lyric"
+          />
         </article>
         <article className="help-page-article">
           <h3>Entering a title</h3>
@@ -26,12 +29,18 @@ const HelpPage = () => {
             then hit return to save the title. To edit a current title, click
             on the title to open the edit field.
           </p>
-          <img src="./images/enter-title.gif" />
+          <img
+            src="./images/enter-title.gif"
+            alt="demonstration of how to enter a new title"
+          />
         </article>
         <article className="help-page-article">
           <h3>Creating a new bar</h3>
           <p>As you are writing in a bar, hit return to create a new bar.</p>
-          <img src="./images/create-bar.gif" />
+          <img
+            src="./images/create-bar.gif"
+            alt="demonstration of how to create a new bar"
+          />
         </article>
         <article className="help-page-article">
           <h3>Getting rhymes for a word</h3>
@@ -39,7 +48,10 @@ const HelpPage = () => {
             Double click on a word in any of your bars to bring up its rhyming
             words on the right side.
           </p>
-          <img src="./images/highlight-word.gif" />
+          <img
+            src="./images/highlight-word.gif"
+            alt="demonstration of how to highlight a word and get rhymes"
+          />
         </article>
         <article className="help-page-article">
           <h3>Copying a rhyme to your clipboard</h3>
@@ -48,7 +60,10 @@ const HelpPage = () => {
             automatically copy that word to your clipboard. Then you can hit
             "cmd + v" to paste it into a bar.
           </p>
-          <img src="./images/copy-to-clipboard.gif" />
+          <img
+            src="./images/copy-to-clipboard.gif"
+            alt="demonstration of how to copy a rhyme to your clipboard"
+          />
         </article>
         <article className="help-page-article">
           <h3>Deleting an existing bar</h3>
@@ -56,7 +71,10 @@ const HelpPage = () => {
             On the Write page, click the "X" button on the right side of any
             bar to permenantly delete it.
           </p>
-          <img src="./images/delete-bar.gif" />
+          <img
+            src="./images/delete-bar.gif"
+            alt="demonstration of how to delete a bar"
+          />
         </article>
         <article className="help-page-article">
           <h3>Deleting an existing lyric</h3>
@@ -65,7 +83,10 @@ const HelpPage = () => {
             lyrics. This will bring up a confirmation message asking if you'd
             like to permenantly delete that lyric.
           </p>
-          <img src="./images/delete-lyric.gif" />
+          <img
+            src="./images/delete-lyric.gif"
+            alt="demonstration of how to delete a lyric"
+          />
         </article>
       </section>
     </main>
