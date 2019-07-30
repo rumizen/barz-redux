@@ -1,68 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Barz
 
-## Available Scripts
+Barz is a web app aimed to solve a niche problem with a simple solution. Musicians (specifically rappers) almost exclusively write lyrics using Google Docs, Notes, or another basic text-editor of choice. This allows them to quickly jot down lyrics as they come to mind, and gives them an easy way to read them while recording.
 
-In the project directory, you can run:
+Barz solves a few major hiccups in that workflow:
 
-### `npm start`
+- Lyrics are written in bar notation, so the artist can easily track what measure they are on without playing back the music multiple times.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Any word can be selected to show a list of rhymes. This saves the artist from having to visit another webpage which can distract from the job at hand.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### UI
 
-### `npm test`
+![Creating a new lyric](./images/create-new.gif)
+![Entering a title](./images/enter-title.gif)
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technology used
 
-### `npm run build`
+- React
+- Redux
+- Javascript
+- Scss
+- DataMuse API
+- Enzyme/Jest
+- PropTypes
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Clone the repo - `https://github.com/rumizen/barz-redux`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Run `npm install` from the root directory
 
-### `npm run eject`
+Run `npm start` and visit `localhost:3000` in your browser
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Contributing
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Please make sure to update tests as appropriate.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
