@@ -31,6 +31,10 @@ Getting rhymes for a word:
 
 ![Getting rhymes for a word](./public/images/highlight-word.gif)
 
+Copying a rhyme to your clipboard:
+
+![Copying a rhyme to your clipboard](./public/images/copy-to-clipboard.gif)
+
 Deleting a bar:
 
 
