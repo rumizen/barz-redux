@@ -4,6 +4,7 @@ import { setActive, setLyrics } from "../../actions";
 import { bindActionCreators } from "redux";
 import Lyric from "../Lyric/Lyric";
 import "./HomePage.scss";
+import PropTypes from "prop-types";
 
 export class HomePage extends Component {
 
@@ -67,6 +68,13 @@ export class HomePage extends Component {
       </main>
     );
   }
+};
+
+HomePage.propTypes = {
+  lyrics: PropTypes.array,
+  setActive: PropTypes.func,
+  setLyrics: PropTypes.func,
+  history: PropTypes.object,
 }
 
 export const mapStateToProps = state => ({

@@ -16,12 +16,18 @@ describe("App", () => {
   let instance;
 
   beforeEach(() => {
-    wrapper = shallow(<App />);
+    wrapper = shallow(<App lyrics={[{ title: "one" }]} />);
     instance = wrapper.instance();
   });
 
   it("should match the snapshot", () => {
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it("should call renderApp if state has been updated", () => {
+    instance.renderApp = jest.fn();
+    instance.render();
+    expect(instance.renderApp).toHaveBeenCalled();
   });
 
   describe("mapStateToProps", () => {

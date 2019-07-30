@@ -15,7 +15,7 @@ describe("Bar", () => {
   let instance;
 
   beforeEach(() => {
-    wrapper = shallow(<Bar text="" id={0} active={false} />);
+    wrapper = shallow(<Bar updateBarActive={jest.fn()} addBar={jest.fn()} text="" id={0} active={false} />);
     instance = wrapper.instance();
   });
 
@@ -25,6 +25,11 @@ describe("Bar", () => {
 
   it("should have default state", () => {
     expect(instance.state).toEqual({ text: "", id: 0, active: false });
+  });
+
+  it.skip("should invoke updateBarActive on key down", () => {
+    wrapper.find(".bar-input").simulate("keypress", { keyCode: 13 });
+    expect(instance.props.updateBarActive).toHaveBeenCalled();
   });
 
   describe("mapStateToProps", () => {

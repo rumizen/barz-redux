@@ -10,6 +10,7 @@ import {
 import { fetchRhymes } from "../../apiCalls";
 import { bindActionCreators } from "redux";
 import "./Bar.scss";
+import PropTypes from "prop-types";
 
 export class Bar extends Component {
   state = {
@@ -102,7 +103,20 @@ export class Bar extends Component {
       </article>
     );
   }
-}
+};
+
+Bar.propTypes = {
+  lyrics: PropTypes.array,
+  rhymes: PropTypes.array,
+  updateLyrics: PropTypes.func,
+  getRhymes: PropTypes.func,
+  addBar: PropTypes.func,
+  updateBarActive: PropTypes.func,
+  deleteBar: PropTypes.func,
+  text: PropTypes.string,
+  id: PropTypes.number,
+  active: PropTypes.bool
+};
 
 export const mapStateToProps = state => ({
   lyrics: state.lyrics,

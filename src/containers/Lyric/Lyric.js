@@ -8,6 +8,7 @@ import {
   setDefaultActive
 } from "../../actions";
 import { bindActionCreators } from "redux";
+import PropTypes from "prop-types";
 
 export class Lyric extends Component {
   state = {
@@ -75,7 +76,18 @@ export class Lyric extends Component {
       </div>
     );
   }
-}
+};
+
+Lyric.propTypes = {
+  lyrics: PropTypes.array,
+  setActive: PropTypes.func,
+  deleteLyric: PropTypes.func,
+  setDefaultActive: PropTypes.func,
+  history: PropTypes.object,
+  id: PropTypes.number,
+  title: PropTypes.string,
+  date: PropTypes.string
+};
 
 export const mapStateToProps = state => ({
   lyrics: state.lyrics
