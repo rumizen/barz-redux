@@ -10,19 +10,33 @@ Barz solves a few major hiccups in that workflow:
 
 ### UI
 
+Creating a new lyric:
+
+
 ![Creating a new lyric](./public/images/create-new.gif)
+
+
+Entering a title:
 
 
 ![Entering a title](./public/images/enter-title.gif)
 
+Creating a new bar:
+
 
 ![Creating a new bar](./public/images/create-bar.gif)
+
+Getting rhymes for a word:
 
 
 ![Getting rhymes for a word](./public/images/highlight-word.gif)
 
+Deleting a bar:
+
 
 ![Deleting a bar](./public/images/delete-bar.gif)
+
+Deleting a lyric:
 
 
 ![Deleting a lyric](./public/images/delete-lyric.gif)
