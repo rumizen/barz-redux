@@ -10,7 +10,7 @@ Barz solves a few major hiccups in that workflow:
 
 ### UI
 
-![Creating a new lyric](./images/create-new.gif)
+![Creating a new lyric](./public/images/create-new.gif)
 ![Entering a title](./images/enter-title.gif)
 
 ## Technology used
