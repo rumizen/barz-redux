@@ -44,8 +44,10 @@ export class Bar extends Component {
 
   handleSelect = async () => {
     const selection = window.getSelection().toString();
-    const word = await fetchRhymes(selection);
-    this.props.getRhymes(word);
+    if (selection) {
+      const word = await fetchRhymes(selection);
+      this.props.getRhymes(word);
+    }
   };
 
   handleKeyDown = e => {
