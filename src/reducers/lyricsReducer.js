@@ -42,12 +42,15 @@ export const lyricsReducer = (
     case "ADD_BAR":
       return state.map(lyric => {
         if (lyric.active === true) {
-          return lyric.sections.map(section => {
+          const updatedSections = lyric.sections.map(section => {
             if (section.id === action.newBar.sectionId) {
               section.bars.push(action.newBar);
-              return lyric;
+              return section;
+            } else {
+              return section;
             }
           });
+          return { ...lyric, sections: updatedSections };
         } else {
           return lyric;
         }
@@ -55,16 +58,19 @@ export const lyricsReducer = (
     case "UPDATE_BAR_ACTIVE":
       return state.map(lyric => {
         if (lyric.active === true) {
-          lyric.sections.map(section => {
+          const updatedSections = lyric.sections.map(section => {
             if (section.id === action.sectionId) {
               const updatedBars = section.bars.map(bar => {
                 return bar.id === action.barId
                   ? { ...bar, active: action.active }
                   : bar;
               });
-              return { ...lyric, [section.bars]: updatedBars };
+              return { ...section, bars: updatedBars };
+            } else {
+              return section;
             }
           });
+          return { ...lyric, sections: updatedSections };
         } else {
           return lyric;
         }
@@ -72,19 +78,22 @@ export const lyricsReducer = (
     case "DELETE_BAR":
       return state.map(lyric => {
         if (lyric.active === true) {
-          lyric.sections.map(section => {
+          const updatedSections = lyric.sections.map(section => {
             if (section.id === action.sectionId) {
               const updatedBars = section.bars.filter(bar => {
                 return bar.id !== action.id;
               });
               return updatedBars.length > 0
-                ? { ...lyric, [section.bars]: updatedBars }
+                ? { ...section, bars: updatedBars }
                 : {
-                    ...lyric,
-                    [section.bars]: [{ text: "", id: Date.now(), active: true }]
+                    ...section,
+                    bars: [{ text: "", id: Date.now(), active: true, sectionId: section.id }]
                   };
+            } else {
+              return section;
             }
           });
+          return { ...lyric, sections: updatedSections };
         } else {
           return lyric;
         }
