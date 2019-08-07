@@ -11,6 +11,7 @@ import { fetchRhymes } from "../../apiCalls";
 import { bindActionCreators } from "redux";
 import "./Bar.scss";
 import PropTypes from "prop-types";
+const syllable = require("syllable");
 
 export class Bar extends Component {
   state = {
@@ -99,6 +100,7 @@ export class Bar extends Component {
             onKeyDown={this.handleKeyDown}
           />
         )}
+        <p className="bar-syllables">{syllable(this.state.text)}</p>
         <button className="bar-close" onClick={this.deleteBar}>
           &#x2715;
         </button>
