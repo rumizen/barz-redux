@@ -10,7 +10,8 @@ import PropTypes from "prop-types";
 export class WritePage extends Component {
   state = {
     title: "",
-    editTitle: false
+    editTitle: false,
+    showSections: false
   };
 
   componentDidMount() {
@@ -40,6 +41,15 @@ export class WritePage extends Component {
     this.setState({ editTitle: true });
   };
 
+  showSections = () => {
+    this.setState({ showSections: !this.state.showSections });
+  };
+
+  closeSections = () => {
+    console.log('blur')
+    this.setState({ showSections: !this.state.showSections });
+  };
+
   renderBars = () => {
     const activeLyric = this.props.lyrics.find(lyric => lyric.active === true);
 
@@ -62,7 +72,7 @@ export class WritePage extends Component {
         </article>
       );
     });
-    
+
     return (
       <section className="write-page-bars-wrapper">
         {this.state.editTitle && (
@@ -86,6 +96,24 @@ export class WritePage extends Component {
           </h2>
         )}
         {allBars}
+        <div onBlur={this.closeSections} className="sections-display">
+          <p
+            className="section-btn open-sections-btn"
+            onClick={this.showSections}
+          >
+            <img src="./images/plus.svg" />
+            Add section
+          </p>
+          {this.state.showSections && (
+            <div className="section-btn-wrapper">
+              <button className="section-btn">Verse</button>
+              <button className="section-btn">Pre-Chorus</button>
+              <button className="section-btn">Hook</button>
+              <button className="section-btn">Bridge</button>
+              <button className="section-btn">Custom</button>
+            </div>
+          )}
+        </div>
       </section>
     );
   };

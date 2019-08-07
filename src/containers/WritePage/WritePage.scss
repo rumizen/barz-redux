@@ -2,6 +2,15 @@
 @import url('https://fonts.googleapis.com/css?family=Rock+Salt&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
+@keyframes slidein {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
 
 .write-page {
   display: flex;
@@ -23,6 +32,52 @@
   border-radius: 4px;
   border: solid black 2px;
   overflow-y: scroll;
+  .sections-display {
+    opacity: .7;
+    margin: 12px 0px 0px 20px;
+    align-self: flex-start;
+    display: flex;
+    justify-content: space-around;
+    border: 2px solid $third-background;
+    color: $third-background;
+    border-radius: 100px;
+    padding: 3px 6px 3px 4px;
+    .section-btn {
+      color: $third-background;
+      border: none;
+      outline: none;
+      margin: 0px 40px;
+      padding: 0;
+      font-weight: 700;
+      &:hover {
+        cursor: pointer;
+        opacity: .6;
+      }
+    }
+    .open-sections-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      outline: none;
+      font-weight: 100;
+      font-size: .7rem;
+      width: 6vw;
+      margin: 0;
+      img {     
+        height: 15px;
+      }
+    }
+  }
+
+  .section-btn-wrapper {
+    animation: slidein .3s ease-in-out;
+    overflow: hidden;
+    transform-origin: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
   .lyric-section {
     font-family: 'Muli', sans-serif;
     display: flex;
@@ -30,7 +85,10 @@
     align-items: center;
     width: 100%;
     h3 {
+      font-size: 1.5rem;
+      align-self: flex-start;
       color: $third-background;
+      margin: 0px 0px 10px 20px;
     }
   }
 }
