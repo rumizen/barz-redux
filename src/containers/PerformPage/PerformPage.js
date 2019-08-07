@@ -11,25 +11,36 @@ export class PerformPage extends Component {
     if (!this.state.scroll) {
       setTimeout(() => {
         this.setState({ scroll: true });
-      }, 2000)
+      }, 2000);
     } else {
       this.setState({ scroll: false });
     }
   };
 
-  render() {
+  renderAllBars = () => {
     const activeLyric = this.props.lyrics.find(lyric => lyric.active);
 
-    const allBars = activeLyric.bars.map((bar, index) => {
-      if (bar.text.length) {
-        return (
-          <div key={bar.id} className="display-bar">
-            <p className="display-bar-num">{index + 1}</p>
-            <p className="display-bar-text">{bar.text}</p>
-          </div>
-        );
-      }
+    return activeLyric.sections.map(section => {
+      return (
+        <article className="lyric-section">
+          <h3>{section.title}</h3>
+          {section.bars.map((bar, index) => {
+            if (bar.text.length) {
+              return (
+                <div key={bar.id} className="display-bar">
+                  <p className="display-bar-num">{index + 1}</p>
+                  <p className="display-bar-text">{bar.text}</p>
+                </div>
+              );
+            }
+          })}
+        </article>
+      );
     });
+  };
+
+  render() {
+    const activeLyric = this.props.lyrics.find(lyric => lyric.active);
     return (
       <main className="perform-page">
         <img
@@ -37,9 +48,11 @@ export class PerformPage extends Component {
           alt="rapper on stage performing with a mic on a blue and purple lit stage"
         />
         <section className="perform-page-bars-wrapper">
-          <h2 className="perform-lyric-title">{activeLyric.title}</h2>
+          <h2 className="perform-lyric-title">
+            {activeLyric && activeLyric.title}
+          </h2>
           <div className={`scroll-section ${this.state.scroll && "scroll-on"}`}>
-            {allBars}
+            {activeLyric && this.renderAllBars()}
           </div>
           <button onClick={this.handleClick} className="scroll-btn">
             {!this.state.scroll && "Start"}

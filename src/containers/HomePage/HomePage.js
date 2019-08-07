@@ -7,18 +7,18 @@ import "./HomePage.scss";
 import PropTypes from "prop-types";
 
 export class HomePage extends Component {
-
   componentDidMount() {
     localStorage.setItem("lyrics", JSON.stringify(this.props.lyrics));
   }
 
   goToWritePage = e => {
+    const sectionId = Math.random();
     const newLyric = {
       title: "",
-      date: new Date().toLocaleDateString("en-US"), 
+      date: new Date().toLocaleDateString("en-US"),
       id: Date.now(),
       active: true,
-      bars: [{ id: Date.now(), text: "" }]
+      sections: [{ title: "Verse", id: sectionId, bars: [{ id: Date.now(), text: "", sectionId: sectionId }] }]
     };
     localStorage.setItem(
       "lyrics",
@@ -38,7 +38,8 @@ export class HomePage extends Component {
           title={lyric.title}
           date={lyric.date}
         />
-      )).reverse();
+      ))
+      .reverse();
 
     return (
       <main className="home-page">
@@ -62,20 +63,18 @@ export class HomePage extends Component {
           />
         </div>
         <h3 className="recent-lyrics">Recent Lyrics</h3>
-        <section className="home-page-lyrics-wrapper">
-        {allLyrics}
-        </section>
+        <section className="home-page-lyrics-wrapper">{allLyrics}</section>
       </main>
     );
   }
-};
+}
 
 HomePage.propTypes = {
   lyrics: PropTypes.array,
   setActive: PropTypes.func,
   setLyrics: PropTypes.func,
-  history: PropTypes.object,
-}
+  history: PropTypes.object
+};
 
 export const mapStateToProps = state => ({
   lyrics: state.lyrics

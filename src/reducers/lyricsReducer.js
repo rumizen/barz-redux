@@ -22,12 +22,19 @@ export const lyricsReducer = (
     case "UPDATE_LYRICS":
       return state.map(lyric => {
         if (lyric.active === true) {
-          const updatedBars = lyric.bars.map(bar => {
-            return bar.id === action.barId
-              ? { ...bar, text: action.text }
-              : bar;
+          const updateSections = lyric.sections.map(section => {
+            if (section.id === action.sectionId) {
+              const updatedBars = section.bars.map(bar => {
+                return bar.id === action.barId
+                  ? { ...bar, text: action.text }
+                  : bar;
+              });
+              return { ...section, bars: updatedBars };
+            } else {
+              return section;
+            }
           });
-          return { ...lyric, bars: updatedBars };
+          return {...lyric, sections: updateSections };
         } else {
           return lyric;
         }
@@ -35,8 +42,15 @@ export const lyricsReducer = (
     case "ADD_BAR":
       return state.map(lyric => {
         if (lyric.active === true) {
-          lyric.bars.push(action.newBar);
-          return lyric;
+          const updatedSections = lyric.sections.map(section => {
+            if (section.id === action.newBar.sectionId) {
+              section.bars.push(action.newBar);
+              return section;
+            } else {
+              return section;
+            }
+          });
+          return { ...lyric, sections: updatedSections };
         } else {
           return lyric;
         }
@@ -44,12 +58,19 @@ export const lyricsReducer = (
     case "UPDATE_BAR_ACTIVE":
       return state.map(lyric => {
         if (lyric.active === true) {
-          const updatedBars = lyric.bars.map(bar => {
-            return bar.id === action.barId
-              ? { ...bar, active: action.active }
-              : bar;
+          const updatedSections = lyric.sections.map(section => {
+            if (section.id === action.sectionId) {
+              const updatedBars = section.bars.map(bar => {
+                return bar.id === action.barId
+                  ? { ...bar, active: action.active }
+                  : bar;
+              });
+              return { ...section, bars: updatedBars };
+            } else {
+              return section;
+            }
           });
-          return { ...lyric, bars: updatedBars };
+          return { ...lyric, sections: updatedSections };
         } else {
           return lyric;
         }
@@ -57,12 +78,22 @@ export const lyricsReducer = (
     case "DELETE_BAR":
       return state.map(lyric => {
         if (lyric.active === true) {
-          const updatedBars = lyric.bars.filter(bar => {
-            return bar.id !== action.id;
+          const updatedSections = lyric.sections.map(section => {
+            if (section.id === action.sectionId) {
+              const updatedBars = section.bars.filter(bar => {
+                return bar.id !== action.id;
+              });
+              return updatedBars.length > 0
+                ? { ...section, bars: updatedBars }
+                : {
+                    ...section,
+                    bars: [{ text: "", id: Date.now(), active: true, sectionId: section.id }]
+                  };
+            } else {
+              return section;
+            }
           });
-          return updatedBars.length > 0
-            ? { ...lyric, bars: updatedBars }
-            : { ...lyric, bars: [{ text: "", id: Date.now(), active: true }]};
+          return { ...lyric, sections: updatedSections };
         } else {
           return lyric;
         }
@@ -79,13 +110,20 @@ export const lyricsReducer = (
           }
         });
       } else {
+        const sectionId = Math.random();
         return [
           {
-            title: "Start writing",
+            title: "",
             date: new Date().toLocaleDateString("en-US"),
             id: Date.now(),
             active: true,
-            bars: [{ id: Date.now(), text: "" }]
+            sections: [
+              {
+                title: "Verse",
+                id: sectionId,
+                bars: [{ id: Date.now(), text: "", sectionId: sectionId }]
+              }
+            ]
           }
         ];
       }

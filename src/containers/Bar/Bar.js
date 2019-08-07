@@ -17,6 +17,7 @@ export class Bar extends Component {
   state = {
     text: "",
     id: 0,
+    sectionId: 0,
     active: false
   };
 
@@ -27,19 +28,22 @@ export class Bar extends Component {
     if(nextProps.id !== this.props.id) {
       this.setState({ id: nextProps.id });
     }
+    if (nextProps.sectionId !== this.props.sectionId) {
+      this.setState({ id: nextProps.id });
+    }
     if(nextProps.active !== this.props.active) {
       this.setState({ active: nextProps.active });
     }
   };
 
   componentDidMount() {
-    const { id, text, active } = this.props;
-    this.setState({ text, id, active });
+    const { sectionId, id, text, active } = this.props;
+    this.setState({ sectionId, text, id, active });
   }
 
   handleChange = async e => {
     await this.setState({ text: e.target.value });
-    this.props.updateLyrics(this.state.id, this.state.text);
+    this.props.updateLyrics(this.state.sectionId, this.state.id, this.state.text);
     localStorage.setItem("lyrics", JSON.stringify(this.props.lyrics));
   };
 
@@ -54,17 +58,18 @@ export class Bar extends Component {
   handleKeyDown = e => {
     if (e.keyCode === 13) {
       e.preventDefault();
-      this.props.updateBarActive(this.state.id, false);
+      this.props.updateBarActive(this.state.sectionId, this.state.id, false);
       this.props.addBar({
         id: Date.now(),
         text: "",
+        sectionId: this.state.sectionId,
         active: true
       });
     }
   };
 
   deleteBar = async () => {
-    await this.props.deleteBar(this.state.id);
+    await this.props.deleteBar(this.state.sectionId, this.state.id);
     await localStorage.setItem("lyrics", JSON.stringify(this.props.lyrics));
   };
 

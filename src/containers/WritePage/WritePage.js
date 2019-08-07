@@ -7,7 +7,6 @@ import RhymeBox from "../RhymeBox/RhymeBox";
 import "./WritePage.scss";
 import PropTypes from "prop-types";
 
-
 export class WritePage extends Component {
   state = {
     title: "",
@@ -16,7 +15,12 @@ export class WritePage extends Component {
 
   componentDidMount() {
     const activeLyric = this.props.lyrics.find(lyric => lyric.active === true);
-    this.setState({ title: activeLyric.title, editTitle: !(activeLyric.title.length > 0)});
+    if (activeLyric) {
+      this.setState({
+        title: activeLyric.title,
+        editTitle: !(activeLyric.title.length > 0)
+      });
+    }
   }
 
   handleKeyDown = async e => {
@@ -24,31 +28,41 @@ export class WritePage extends Component {
       e.preventDefault();
       await this.props.updateTitle(this.state.title);
       localStorage.setItem("lyrics", JSON.stringify(this.props.lyrics));
-      this.setState({ editTitle: false })
+      this.setState({ editTitle: false });
     }
   };
 
   handleChange = e => {
     this.setState({ title: e.target.value });
-  }
+  };
 
   editTitle = () => {
     this.setState({ editTitle: true });
-  }
+  };
 
-    renderBars = () => {
+  renderBars = () => {
     const activeLyric = this.props.lyrics.find(lyric => lyric.active === true);
-    const allBars = activeLyric.bars.map((bar, index) => {
+
+    const allBars = activeLyric.sections.map(section => {
       return (
-        <Bar
-          key={index + 1}
-          number={index + 1}
-          text={bar.text}
-          id={bar.id}
-          active={bar.active}
-        />
+        <article className="lyric-section">
+          <h3>{section.title}</h3>
+          {section.bars.map((bar, index) => {
+            return (
+              <Bar
+                key={index + 1}
+                number={index + 1}
+                text={bar.text}
+                id={bar.id}
+                active={bar.active}
+                sectionId={section.id}
+              />
+            );
+          })}
+        </article>
       );
     });
+    
     return (
       <section className="write-page-bars-wrapper">
         {this.state.editTitle && (
@@ -77,26 +91,26 @@ export class WritePage extends Component {
   };
 
   render() {
-    const activeLyric = this.props.lyrics.find(
-      lyric => lyric.active === true
-    );
+    const activeLyric = this.props.lyrics.find(lyric => lyric.active === true);
     return (
       <main className="write-page">
         <div className="background-img-wrapper">
-          <img src="./images/twoRappersMed.jpg" alt="two rappers performing intensely on stage" />
+          <img
+            src="./images/twoRappersMed.jpg"
+            alt="two rappers performing intensely on stage"
+          />
         </div>
         {this.props.lyrics.length > 0 && activeLyric && this.renderBars()}
         <RhymeBox />
       </main>
     );
   }
-};
+}
 
 WritePage.propTypes = {
   lyrics: PropTypes.array,
-  updateTitle: PropTypes.func,
-  
-}
+  updateTitle: PropTypes.func
+};
 
 export const mapStateToProps = state => ({
   lyrics: state.lyrics
