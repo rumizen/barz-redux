@@ -1,5 +1,7 @@
 @import '../../index.scss';
 @import url('https://fonts.googleapis.com/css?family=Rock+Salt&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
 
 .write-page {
   display: flex;
@@ -21,6 +23,16 @@
   border-radius: 4px;
   border: solid black 2px;
   overflow-y: scroll;
+  .lyric-section {
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    h3 {
+      color: $third-background;
+    }
+  }
 }
 
 .title-input {
