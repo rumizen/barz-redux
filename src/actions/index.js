@@ -3,7 +3,7 @@ export const setActive = id => ({
   id
 });
 
-export const updateLyrics = (barId, text) => ({
+export const updateLyrics = (sectionId, barId, text) => ({
   type: "UPDATE_LYRICS",
   barId,
   text
@@ -29,7 +29,7 @@ export const setLyrics = lyrics => ({
   lyrics
 });
 
-export const updateBarActive = (barId, active) => ({
+export const updateBarActive = (sectionID, barId, active) => ({
   type: "UPDATE_BAR_ACTIVE",
   barId,
   active
@@ -40,7 +40,7 @@ export const updateTitle = title => ({
   title
 });
 
-export const deleteBar = id => ({
+export const deleteBar = (sectionId, id) => ({
   type: "DELETE_BAR",
   id
 });
