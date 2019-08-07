@@ -21,12 +21,14 @@ export class PerformPage extends Component {
     const activeLyric = this.props.lyrics.find(lyric => lyric.active);
 
     const allBars = activeLyric.bars.map((bar, index) => {
-      return (
-        <div key={bar.id} className="display-bar">
-          <p className="display-bar-num">{index + 1}</p>
-          <p className="display-bar-text">{bar.text}</p>
-        </div>
-      );
+      if (bar.text.length) {
+        return (
+          <div key={bar.id} className="display-bar">
+            <p className="display-bar-num">{index + 1}</p>
+            <p className="display-bar-text">{bar.text}</p>
+          </div>
+        );
+      }
     });
     return (
       <main className="perform-page">
