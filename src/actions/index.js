@@ -56,3 +56,8 @@ export const addSection = section => ({
   type: "ADD_SECTION",
   section
 });
+
+export const deleteSection = sectionId => ({
+  type: "DELETE_SECTION",
+  sectionId
+});

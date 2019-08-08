@@ -11,7 +11,8 @@ export class WritePage extends Component {
   state = {
     title: "",
     editTitle: false,
-    showSections: false
+    showSections: false,
+    sectionButtons: false
   };
 
   componentDidMount() {
@@ -57,7 +58,15 @@ export class WritePage extends Component {
       bars: [{ id: Date.now(), text: "", sectionId: sectionId }]
     };
     this.props.addSection(newSection);
-  }
+  };
+
+  hideSectionButtons = () => {
+    this.setState({ sectionButtons: false });
+  };
+
+  showSectionButtons = () => {
+    this.setState({ sectionButtons: true });
+  };
 
   renderBars = () => {
     const activeLyric = this.props.lyrics.find(lyric => lyric.active === true);
@@ -65,7 +74,19 @@ export class WritePage extends Component {
     const allBars = activeLyric.sections.map(section => {
       return (
         <article className="lyric-section">
-          <h3>{section.title}</h3>
+          <header
+            className="section-header"
+            onMouseEnter={this.showSectionButtons}
+            onMouseLeave={this.hideSectionButtons}
+          >
+            <h3>{section.title}</h3>
+            {this.state.sectionButtons && (
+              <div className="section-btns-wrapper">
+                <img src="./images/menu.svg" alt="hamburger menu icon" />
+                <button>&#x2715;</button>
+              </div>
+            )}
+          </header>
           {section.bars.map((bar, index) => {
             return (
               <Bar

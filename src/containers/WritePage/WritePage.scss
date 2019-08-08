@@ -1,6 +1,6 @@
-@import '../../index.scss';
-@import url('https://fonts.googleapis.com/css?family=Rock+Salt&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import "../../index.scss";
+@import url("https://fonts.googleapis.com/css?family=Rock+Salt&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
 
 @keyframes slidein {
   0% {
@@ -32,9 +32,9 @@
 }
 
 .write-page-bars-wrapper {
-  box-shadow: 10px 10px 28px -14px rgba(77,77,77,1);
+  box-shadow: 10px 10px 28px -14px rgba(77, 77, 77, 1);
   background-color: white;
-  opacity: .7;
+  opacity: 0.7;
   position: relative;
   top: 15vh;
   display: flex;
@@ -66,7 +66,7 @@
       font-size: 1rem;
       &:hover {
         cursor: pointer;
-        opacity: .6;
+        opacity: 0.6;
       }
     }
     .open-sections-btn {
@@ -75,20 +75,20 @@
       align-items: center;
       outline: none;
       font-weight: 100;
-      font-size: .7rem;
+      font-size: 0.7rem;
       width: 6vw;
       margin: 0;
       .close-btn {
-        animation: rotateBtn .2s forwards;
+        animation: rotateBtn 0.2s forwards;
       }
-      img {     
+      img {
         height: 15px;
       }
     }
   }
 
   .section-btn-wrapper {
-    animation: slidein .15s linear;
+    animation: slidein 0.15s linear;
     overflow: hidden;
     transform-origin: left;
     display: flex;
@@ -97,16 +97,48 @@
   }
 
   .lyric-section {
-    font-family: 'Muli', sans-serif;
+    font-family: "Muli", sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    h3 {
-      font-size: 1.5rem;
-      align-self: flex-start;
-      color: $third-background;
-      margin: 15px 0px 15px 28px;
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      h3 {
+        font-size: 1.5rem;
+        color: $third-background;
+        margin: 15px 0px 15px 28px;
+      }
+      .section-btns-wrapper {
+        display: flex;
+        align-items: center;
+        margin-right: 22px;
+        img {
+          height: 17px;
+          margin-top: 6px;
+          margin-right: 7px;
+          &:hover {
+            cursor: grab;
+            opacity: 0.7;
+          }
+          &:active {
+            cursor: grabbing;
+          }
+        }
+        button {
+          height: 20px;
+          border: none;
+          outline: none;
+          font-size: 1.3rem;
+          &:hover {
+            cursor: pointer;
+            opacity: 0.7;
+          }
+        }
+      }
     }
   }
 }
@@ -121,7 +153,7 @@
 }
 
 .write-page-lyric-title {
-  font-family: 'Rock Salt', cursive;
+  font-family: "Rock Salt", cursive;
   align-self: center;
   margin: 5px;
   font-size: 18pt;
