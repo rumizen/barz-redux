@@ -61,3 +61,9 @@ export const deleteSection = sectionId => ({
   type: "DELETE_SECTION",
   sectionId
 });
+
+export const updateSectionTitle = (id, title) => ({
+  type: "UPDATE_SECTION_TITLE",
+  id,
+  title
+});

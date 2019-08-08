@@ -1,15 +1,25 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { deleteSection } from "../../actions";
 import Bar from "../../containers/Bar/Bar";
 import "./LyricSection.scss";
 import "../../containers/WritePage/WritePage.scss";
 
 class LyricSection extends Component {
   state = {
-    sectionButtons: false
+    sectionButtons: false,
+    editTitle: false,
+    editIcon: false,
+    title: ""
   };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.title !== this.props.title) {
+      this.setState({ title: nextProps.title });
+    }
+  }
+
+  componentDidMount() {
+    this.setState({ title: this.props.title });
+  }
 
   showSectionButtons = () => {
     this.setState({ sectionButtons: true });
@@ -24,15 +34,82 @@ class LyricSection extends Component {
     localStorage.setItem("barzLyrics", JSON.stringify(this.props.lyrics));
   };
 
+  handleChange = e => {
+    this.setState({ title: e.target.value });
+  };
+
+  editTitle = () => {
+    this.setState({ editTitle: true });
+  };
+
+  handleKeyDown = async e => {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      await this.props.updateSectionTitle(this.props.id, this.state.title);
+      await localStorage.setItem(
+        "barzLyrics",
+        JSON.stringify(this.props.lyrics)
+      );
+      await this.setState({ editTitle: false });
+    }
+  };
+
+  handleBlur = () => {
+      this.props.updateSectionTitle(this.props.id, this.state.title);
+      localStorage.setItem(
+        "barzLyrics",
+        JSON.stringify(this.props.lyrics)
+      );
+      this.setState({ editTitle: false });
+  };
+
+  showEditIcon = () => {
+    this.setState({ editIcon: true });
+  };
+
+  hideEditIcon = () => {
+    this.setState({ editIcon: false });
+  };
+
   render() {
     return (
-      <article className="lyric-section">
+      <article
+        className={`lyric-section ${this.state.sectionButtons &&
+          "lyric-section-background"}`}
+      >
         <header
           className="section-header"
           onMouseEnter={this.showSectionButtons}
           onMouseLeave={this.hideSectionButtons}
         >
-          <h3>{this.props.title}</h3>
+          {!this.state.editTitle && (
+            <div
+              className="lyric-section-title-wrapper"
+              onClick={this.editTitle}
+              onMouseEnter={this.showEditIcon}
+              onMouseLeave={this.hideEditIcon}
+            >
+              <h3>{this.props.title}</h3>
+              <img
+                className={
+                  this.state.editIcon ? "edit-icon-display" : "edit-icon"
+                }
+                src="./images/editBlue.svg"
+                alt="edit icon"
+              />
+            </div>
+          )}
+          {this.state.editTitle && (
+            <input
+              className="lyric-section-title-input"
+              type="text"
+              name="title"
+              value={this.state.title}
+              onChange={this.handleChange}
+              onKeyDown={this.handleKeyDown}
+              onBlur={this.handleBlur}
+            />
+          )}
           {this.state.sectionButtons && (
             <div className="section-btns-wrapper">
               <img src="./images/menu.svg" alt="hamburger menu icon" />
