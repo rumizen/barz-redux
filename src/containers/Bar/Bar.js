@@ -44,7 +44,7 @@ export class Bar extends Component {
   handleChange = async e => {
     await this.setState({ text: e.target.value });
     this.props.updateLyrics(this.state.sectionId, this.state.id, this.state.text);
-    localStorage.setItem("lyrics", JSON.stringify(this.props.lyrics));
+    localStorage.setItem("barzLyrics", JSON.stringify(this.props.lyrics));
   };
 
   handleSelect = async () => {
@@ -70,7 +70,10 @@ export class Bar extends Component {
 
   deleteBar = async () => {
     await this.props.deleteBar(this.state.sectionId, this.state.id);
-    await localStorage.setItem("lyrics", JSON.stringify(this.props.lyrics));
+    await localStorage.setItem(
+      "barzLyrics",
+      JSON.stringify(this.props.lyrics)
+    );
   };
 
   render() {

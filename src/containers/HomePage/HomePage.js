@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 
 export class HomePage extends Component {
   componentDidMount() {
-    localStorage.setItem("lyrics", JSON.stringify(this.props.lyrics));
+    localStorage.setItem("barzLyrics", JSON.stringify(this.props.lyrics));
   }
 
   goToWritePage = e => {
@@ -21,7 +21,7 @@ export class HomePage extends Component {
       sections: [{ title: "Verse", id: sectionId, bars: [{ id: Date.now(), text: "", sectionId: sectionId }] }]
     };
     localStorage.setItem(
-      "lyrics",
+      "barzLyrics",
       JSON.stringify([...this.props.lyrics, newLyric])
     );
     this.props.setLyrics([...this.props.lyrics, newLyric]);
@@ -58,7 +58,7 @@ export class HomePage extends Component {
           <img
             id="createNewLyric"
             className="home-page-write-btn-icon"
-            src="./images/plus.svg"
+            src="./images/plusBlack.svg"
             alt="plus sign icon"
           />
         </div>

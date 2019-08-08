@@ -51,3 +51,8 @@ export const deleteBar = (sectionId, id) => ({
 export const setDefaultActive = () => ({
   type: "SET_DEFAULT_ACTIVE"
 });
+
+export const addSection = section => ({
+  type: "ADD_SECTION",
+  section
+});

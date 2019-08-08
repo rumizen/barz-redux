@@ -1,5 +1,5 @@
 export const lyricsReducer = (
-  state = JSON.parse(localStorage.getItem("lyrics")) || [],
+  state = JSON.parse(localStorage.getItem("barzLyrics")) || [],
   action
 ) => {
   switch (action.type) {
@@ -127,6 +127,15 @@ export const lyricsReducer = (
           }
         ];
       }
+    case "ADD_SECTION":
+      return state.map(lyric => {
+        if (lyric.active === true) {
+          lyric.sections.push(action.section);
+          return lyric;
+        } else {
+          return lyric;
+        }
+      })
     default:
       return state;
   }

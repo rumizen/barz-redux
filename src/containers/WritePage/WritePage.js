@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updateTitle } from "../../actions";
+import { updateTitle, addSection } from "../../actions";
 import { bindActionCreators } from "redux";
 import Bar from "../Bar/Bar";
 import RhymeBox from "../RhymeBox/RhymeBox";
@@ -28,7 +28,7 @@ export class WritePage extends Component {
     if (e.keyCode === 13) {
       e.preventDefault();
       await this.props.updateTitle(this.state.title);
-      localStorage.setItem("lyrics", JSON.stringify(this.props.lyrics));
+      localStorage.setItem("barzLyrics", JSON.stringify(this.props.lyrics));
       this.setState({ editTitle: false });
     }
   };
@@ -46,9 +46,18 @@ export class WritePage extends Component {
   };
 
   closeSections = () => {
-    console.log('blur')
     this.setState({ showSections: !this.state.showSections });
   };
+
+  createNewSection = e => {
+    const sectionId = Math.random();
+    const newSection = {
+      title: e.target.name,
+      id: sectionId,
+      bars: [{ id: Date.now(), text: "", sectionId: sectionId }]
+    };
+    this.props.addSection(newSection);
+  }
 
   renderBars = () => {
     const activeLyric = this.props.lyrics.find(lyric => lyric.active === true);
@@ -106,11 +115,11 @@ export class WritePage extends Component {
           </p>
           {this.state.showSections && (
             <div className="section-btn-wrapper">
-              <button className="section-btn">Verse</button>
-              <button className="section-btn">Pre-Chorus</button>
-              <button className="section-btn">Hook</button>
-              <button className="section-btn">Bridge</button>
-              <button className="section-btn">Custom</button>
+              <button name="Verse" onClick={this.createNewSection} className="section-btn">Verse</button>
+              <button name="Pre-Chorus" onClick={this.createNewSection} className="section-btn">Pre-Chorus</button>
+              <button name="Hook" onClick={this.createNewSection} className="section-btn">Hook</button>
+              <button name="Bridge" onClick={this.createNewSection} className="section-btn">Bridge</button>
+              <button name="Customer" onClick={this.createNewSection} className="section-btn">Custom</button>
             </div>
           )}
         </div>
@@ -129,6 +138,7 @@ export class WritePage extends Component {
           />
         </div>
         {this.props.lyrics.length > 0 && activeLyric && this.renderBars()}
+        {/* {this.props.lyrics.length !== 0 && <p>Create new lyrics on the home page</p>} */}
         <RhymeBox />
       </main>
     );
@@ -145,7 +155,7 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch =>
-  bindActionCreators({ updateTitle }, dispatch);
+  bindActionCreators({ updateTitle, addSection }, dispatch);
 
 export default connect(
   mapStateToProps,
