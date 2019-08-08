@@ -5,9 +5,15 @@
 @keyframes slidein {
   0% {
     transform: scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scaleX(0.5);
+    opacity: 0.5;
   }
   100% {
     transform: scaleX(1);
+    opacity: 1;
   }
 }
 
@@ -33,15 +39,15 @@
   border: solid black 2px;
   overflow-y: scroll;
   .sections-display {
-    opacity: .7;
-    margin: 12px 0px 0px 20px;
+    opacity: 1;
+    margin: 18px 0px 0px 24px;
     align-self: flex-start;
     display: flex;
     justify-content: space-around;
-    border: 2px solid $third-background;
     color: $third-background;
     border-radius: 100px;
     padding: 3px 6px 3px 4px;
+    height: 20px;
     .section-btn {
       color: $third-background;
       border: none;
@@ -49,6 +55,7 @@
       margin: 0px 40px;
       padding: 0;
       font-weight: 700;
+      font-size: 1rem;
       &:hover {
         cursor: pointer;
         opacity: .6;
@@ -69,8 +76,10 @@
     }
   }
 
+  
+
   .section-btn-wrapper {
-    animation: slidein .3s ease-in-out;
+    animation: slidein .15s linear;
     overflow: hidden;
     transform-origin: left;
     display: flex;
@@ -88,7 +97,7 @@
       font-size: 1.5rem;
       align-self: flex-start;
       color: $third-background;
-      margin: 0px 0px 10px 20px;
+      margin: 0px 0px 14px 27px;
     }
   }
 }
