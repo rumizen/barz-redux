@@ -1,5 +1,21 @@
+const sectionId = Math.random();
+
 export const lyricsReducer = (
-  state = JSON.parse(localStorage.getItem("barzLyrics")) || [],
+  state = JSON.parse(localStorage.getItem("barzLyrics")) || [
+    {
+      title: "",
+      date: new Date().toLocaleDateString("en-US"),
+      id: Date.now(),
+      active: true,
+      sections: [
+        {
+          title: "Verse",
+          id: sectionId,
+          bars: [{ id: Date.now(), text: "", sectionId: sectionId }]
+        }
+      ]
+    }
+  ],
   action
 ) => {
   switch (action.type) {
@@ -34,7 +50,7 @@ export const lyricsReducer = (
               return section;
             }
           });
-          return {...lyric, sections: updateSections };
+          return { ...lyric, sections: updateSections };
         } else {
           return lyric;
         }
@@ -87,7 +103,14 @@ export const lyricsReducer = (
                 ? { ...section, bars: updatedBars }
                 : {
                     ...section,
-                    bars: [{ text: "", id: Date.now(), active: true, sectionId: section.id }]
+                    bars: [
+                      {
+                        text: "",
+                        id: Date.now(),
+                        active: true,
+                        sectionId: section.id
+                      }
+                    ]
                   };
             } else {
               return section;
@@ -121,7 +144,13 @@ export const lyricsReducer = (
               {
                 title: "Verse",
                 id: sectionId,
-                bars: [{ id: Date.now(), text: "", sectionId: sectionId }]
+                bars: [
+                  {
+                    id: Date.now(),
+                    text: "",
+                    sectionId: sectionId
+                  }
+                ]
               }
             ]
           }
@@ -135,7 +164,7 @@ export const lyricsReducer = (
         } else {
           return lyric;
         }
-      })
+      });
     default:
       return state;
   }
