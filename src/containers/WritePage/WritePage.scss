@@ -17,6 +17,15 @@
   }
 }
 
+@keyframes rotateBtn {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
+
 .write-page {
   display: flex;
   justify-content: space-between;
@@ -69,6 +78,9 @@
       font-size: .7rem;
       width: 6vw;
       margin: 0;
+      .close-btn {
+        animation: rotateBtn .2s forwards;
+      }
       img {     
         height: 15px;
       }

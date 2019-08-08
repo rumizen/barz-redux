@@ -110,16 +110,49 @@ export class WritePage extends Component {
             className="section-btn open-sections-btn"
             onClick={this.showSections}
           >
-            <img src="./images/plus.svg" />
-            Add section
+            <img
+              className={this.state.showSections && "close-btn"}
+              src="./images/plus.svg"
+            />
+            {!this.state.showSections && "Add section"}
           </p>
           {this.state.showSections && (
             <div className="section-btn-wrapper">
-              <button name="Verse" onClick={this.createNewSection} className="section-btn">Verse</button>
-              <button name="Pre-Chorus" onClick={this.createNewSection} className="section-btn">Pre-Chorus</button>
-              <button name="Hook" onClick={this.createNewSection} className="section-btn">Hook</button>
-              <button name="Bridge" onClick={this.createNewSection} className="section-btn">Bridge</button>
-              <button name="Customer" onClick={this.createNewSection} className="section-btn">Custom</button>
+              <button
+                name="Verse"
+                onClick={this.createNewSection}
+                className="section-btn"
+              >
+                Verse
+              </button>
+              <button
+                name="Pre-Chorus"
+                onClick={this.createNewSection}
+                className="section-btn"
+              >
+                Pre-Chorus
+              </button>
+              <button
+                name="Hook"
+                onClick={this.createNewSection}
+                className="section-btn"
+              >
+                Hook
+              </button>
+              <button
+                name="Bridge"
+                onClick={this.createNewSection}
+                className="section-btn"
+              >
+                Bridge
+              </button>
+              <button
+                name="Customer"
+                onClick={this.createNewSection}
+                className="section-btn"
+              >
+                Custom
+              </button>
             </div>
           )}
         </div>
