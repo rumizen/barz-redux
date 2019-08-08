@@ -2,6 +2,21 @@
 @import url('https://fonts.googleapis.com/css?family=Rock+Salt&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
+@keyframes slidein {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scaleX(0.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
 
 .write-page {
   display: flex;
@@ -23,6 +38,55 @@
   border-radius: 4px;
   border: solid black 2px;
   overflow-y: scroll;
+  .sections-display {
+    opacity: 1;
+    margin: 18px 0px 0px 24px;
+    align-self: flex-start;
+    display: flex;
+    justify-content: space-around;
+    color: $third-background;
+    border-radius: 100px;
+    padding: 3px 6px 3px 4px;
+    height: 20px;
+    .section-btn {
+      color: $third-background;
+      border: none;
+      outline: none;
+      margin: 0px 40px;
+      padding: 0;
+      font-weight: 700;
+      font-size: 1rem;
+      &:hover {
+        cursor: pointer;
+        opacity: .6;
+      }
+    }
+    .open-sections-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      outline: none;
+      font-weight: 100;
+      font-size: .7rem;
+      width: 6vw;
+      margin: 0;
+      img {     
+        height: 15px;
+      }
+    }
+  }
+
+  
+
+  .section-btn-wrapper {
+    animation: slidein .15s linear;
+    overflow: hidden;
+    transform-origin: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
   .lyric-section {
     font-family: 'Muli', sans-serif;
     display: flex;
@@ -30,7 +94,10 @@
     align-items: center;
     width: 100%;
     h3 {
+      font-size: 1.5rem;
+      align-self: flex-start;
       color: $third-background;
+      margin: 0px 0px 14px 27px;
     }
   }
 }
