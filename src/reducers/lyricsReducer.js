@@ -165,6 +165,15 @@ export const lyricsReducer = (
           return lyric;
         }
       });
+    case "DELETE_SECTION":
+      return state.map(lyric => {
+        if (lyric.active === true) {
+          const updatedSections = lyric.sections.filter(section => section.id !== action.sectionId);
+          return { ...lyric, sections: updatedSections };
+        } else {
+          return lyric;
+        }
+      })
     default:
       return state;
   }
