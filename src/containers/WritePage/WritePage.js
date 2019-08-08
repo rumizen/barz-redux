@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updateTitle, addSection } from "../../actions";
+import { updateTitle, addSection, deleteSection } from "../../actions";
 import { bindActionCreators } from "redux";
-import Bar from "../Bar/Bar";
 import RhymeBox from "../RhymeBox/RhymeBox";
 import "./WritePage.scss";
 import PropTypes from "prop-types";
+import LyricSection from "../../components/LyricSection/LyricSection";
 
 export class WritePage extends Component {
   state = {
@@ -60,48 +60,12 @@ export class WritePage extends Component {
     this.props.addSection(newSection);
   };
 
-  hideSectionButtons = () => {
-    this.setState({ sectionButtons: false });
-  };
-
-  showSectionButtons = () => {
-    this.setState({ sectionButtons: true });
-  };
-
   renderBars = () => {
     const activeLyric = this.props.lyrics.find(lyric => lyric.active === true);
 
-    const allBars = activeLyric.sections.map(section => {
-      return (
-        <article className="lyric-section">
-          <header
-            className="section-header"
-            onMouseEnter={this.showSectionButtons}
-            onMouseLeave={this.hideSectionButtons}
-          >
-            <h3>{section.title}</h3>
-            {this.state.sectionButtons && (
-              <div className="section-btns-wrapper">
-                <img src="./images/menu.svg" alt="hamburger menu icon" />
-                <button>&#x2715;</button>
-              </div>
-            )}
-          </header>
-          {section.bars.map((bar, index) => {
-            return (
-              <Bar
-                key={index + 1}
-                number={index + 1}
-                text={bar.text}
-                id={bar.id}
-                active={bar.active}
-                sectionId={section.id}
-              />
-            );
-          })}
-        </article>
-      );
-    });
+    const allSections = activeLyric.sections.map(section => (
+      <LyricSection title={section.title} id={section.id} bars={section.bars} lyrics={this.props.lyrics} deleteSection={this.props.deleteSection} />
+    ));
 
     return (
       <section className="write-page-bars-wrapper">
@@ -125,7 +89,7 @@ export class WritePage extends Component {
             {activeLyric.title}
           </h2>
         )}
-        {allBars}
+        {allSections}
         <div onBlur={this.closeSections} className="sections-display">
           <p
             className="section-btn open-sections-btn"
@@ -209,7 +173,7 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch =>
-  bindActionCreators({ updateTitle, addSection }, dispatch);
+  bindActionCreators({ updateTitle, addSection, deleteSection }, dispatch);
 
 export default connect(
   mapStateToProps,

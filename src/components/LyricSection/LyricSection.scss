@@ -1,0 +1,49 @@
+@import "../../index.scss";
+@import url("https://fonts.googleapis.com/css?family=Rock+Salt&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+
+// .lyric-section {
+//   font-family: "Muli", sans-serif;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   width: 100%;
+//   .section-header {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     width: 100%;
+//     h3 {
+//       font-size: 1.5rem;
+//       color: $third-background;
+//       margin: 15px 0px 15px 28px;
+//     }
+//     .section-btns-wrapper {
+//       display: flex;
+//       align-items: center;
+//       margin-right: 22px;
+//       img {
+//         height: 17px;
+//         margin-top: 6px;
+//         margin-right: 7px;
+//         &:hover {
+//           cursor: grab;
+//           opacity: 0.7;
+//         }
+//         &:active {
+//           cursor: grabbing;
+//         }
+//       }
+//       button {
+//         height: 20px;
+//         border: none;
+//         outline: none;
+//         font-size: 1.3rem;
+//         &:hover {
+//           cursor: pointer;
+//           opacity: 0.7;
+//         }
+//       }
+//     }
+//   }
+// }
