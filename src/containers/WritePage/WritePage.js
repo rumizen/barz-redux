@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updateTitle, addSection, deleteSection } from "../../actions";
+import {
+  updateTitle,
+  addSection,
+  deleteSection,
+  updateSectionTitle
+} from "../../actions";
 import { bindActionCreators } from "redux";
 import RhymeBox from "../RhymeBox/RhymeBox";
 import "./WritePage.scss";
@@ -11,6 +16,7 @@ export class WritePage extends Component {
   state = {
     title: "",
     editTitle: false,
+    editIcon: false,
     showSections: false,
     sectionButtons: false
   };
@@ -34,6 +40,12 @@ export class WritePage extends Component {
     }
   };
 
+  handleBlur = async () => {
+    await this.props.updateTitle(this.state.title);
+    await localStorage.setItem("barzLyrics", JSON.stringify(this.props.lyrics));
+    await this.setState({ editTitle: false });
+  };
+
   handleChange = e => {
     this.setState({ title: e.target.value });
   };
@@ -53,18 +65,34 @@ export class WritePage extends Component {
   createNewSection = e => {
     const sectionId = Math.random();
     const newSection = {
-      title: e.target.name,
+      title: e.target.name === "Custom" ? "New Section" : e.target.name,
       id: sectionId,
       bars: [{ id: Date.now(), text: "", sectionId: sectionId }]
     };
     this.props.addSection(newSection);
   };
 
+  showEditIcon = () => {
+    this.setState({ editIcon: true });
+  };
+
+  hideEditIcon = () => {
+    this.setState({ editIcon: false });
+  };
+
   renderBars = () => {
     const activeLyric = this.props.lyrics.find(lyric => lyric.active === true);
 
     const allSections = activeLyric.sections.map(section => (
-      <LyricSection title={section.title} id={section.id} bars={section.bars} lyrics={this.props.lyrics} deleteSection={this.props.deleteSection} />
+      <LyricSection
+        key={section.id}
+        title={section.title}
+        id={section.id}
+        bars={section.bars}
+        lyrics={this.props.lyrics}
+        deleteSection={this.props.deleteSection}
+        updateSectionTitle={this.props.updateSectionTitle}
+      />
     ));
 
     return (
@@ -81,13 +109,26 @@ export class WritePage extends Component {
               placeholder="Enter title"
               onChange={this.handleChange}
               onKeyDown={this.handleKeyDown}
+              onBlur={this.handleBlur}
             />
           </form>
         )}
         {!this.state.editTitle && (
-          <h2 className="write-page-lyric-title" onClick={this.editTitle}>
-            {activeLyric.title}
-          </h2>
+          <div
+            className="lyric-title-wrapper"
+            onClick={this.editTitle}
+            onMouseEnter={this.showEditIcon}
+            onMouseLeave={this.hideEditIcon}
+          >
+            <h2 className="write-page-lyric-title">{activeLyric.title}</h2>
+            <img
+              className={
+                this.state.editIcon ? "edit-icon-display" : "edit-icon"
+              }
+              src="./images/edit.svg"
+              alt="edit icon"
+            />
+          </div>
         )}
         {allSections}
         <div onBlur={this.closeSections} className="sections-display">
@@ -96,10 +137,12 @@ export class WritePage extends Component {
             onClick={this.showSections}
           >
             <img
-              className={this.state.showSections && "close-btn"}
+              className={this.state.showSections ? "close-btn" : null}
               src="./images/plus.svg"
+              alt="plus sign icon"
             />
-            {!this.state.showSections && "Add section"}
+            {!this.state.showSections && "New section"}
+            {this.state.showSections && "Close"}
           </p>
           {this.state.showSections && (
             <div className="section-btn-wrapper">
@@ -132,7 +175,7 @@ export class WritePage extends Component {
                 Bridge
               </button>
               <button
-                name="Customer"
+                name="Custom"
                 onClick={this.createNewSection}
                 className="section-btn"
               >
@@ -173,7 +216,15 @@ export const mapStateToProps = state => ({
 });
 
 export const mapDispatchToProps = dispatch =>
-  bindActionCreators({ updateTitle, addSection, deleteSection }, dispatch);
+  bindActionCreators(
+    {
+      updateTitle,
+      addSection,
+      deleteSection,
+      updateSectionTitle
+    },
+    dispatch
+  );
 
 export default connect(
   mapStateToProps,

@@ -38,7 +38,7 @@ export const lyricsReducer = (
     case "UPDATE_LYRICS":
       return state.map(lyric => {
         if (lyric.active === true) {
-          const updateSections = lyric.sections.map(section => {
+          const updatedSections = lyric.sections.map(section => {
             if (section.id === action.sectionId) {
               const updatedBars = section.bars.map(bar => {
                 return bar.id === action.barId
@@ -50,7 +50,7 @@ export const lyricsReducer = (
               return section;
             }
           });
-          return { ...lyric, sections: updateSections };
+          return { ...lyric, sections: updatedSections };
         } else {
           return lyric;
         }
@@ -169,6 +169,21 @@ export const lyricsReducer = (
       return state.map(lyric => {
         if (lyric.active === true) {
           const updatedSections = lyric.sections.filter(section => section.id !== action.sectionId);
+          return { ...lyric, sections: updatedSections };
+        } else {
+          return lyric;
+        }
+      });
+    case "UPDATE_SECTION_TITLE":
+      return state.map(lyric => {
+        if (lyric.active === true) {
+          const updatedSections = lyric.sections.map(section => {
+            if (section.id === action.id) {
+              return { ...section, title: action.title };
+            } else {
+              return section;
+            }
+          });
           return { ...lyric, sections: updatedSections };
         } else {
           return lyric;
