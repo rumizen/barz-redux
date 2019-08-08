@@ -17,7 +17,6 @@
   }
 }
 
-
 .write-page {
   display: flex;
   justify-content: space-between;
@@ -34,13 +33,13 @@
   align-items: center;
   width: 77vw;
   height: 81.7vh;
-  margin: 2vh 0vw 0vh 1vw;
+  margin: 2vh 0vw 1vh 1vw;
   border-radius: 4px;
   border: solid black 2px;
   overflow-y: scroll;
   .sections-display {
     opacity: 1;
-    margin: 18px 0px 0px 24px;
+    margin: 18px 0px 20px 24px;
     align-self: flex-start;
     display: flex;
     justify-content: space-around;
@@ -76,8 +75,6 @@
     }
   }
 
-  
-
   .section-btn-wrapper {
     animation: slidein .15s linear;
     overflow: hidden;
@@ -97,7 +94,7 @@
       font-size: 1.5rem;
       align-self: flex-start;
       color: $third-background;
-      margin: 0px 0px 14px 27px;
+      margin: 15px 0px 15px 28px;
     }
   }
 }
