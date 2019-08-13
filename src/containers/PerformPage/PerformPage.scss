@@ -80,6 +80,8 @@
     align-items: center;
     width: 100%;
     h3 {
+      padding-left: 20px;
+      align-self: flex-start;
       color: $third-background;
     }
   }
