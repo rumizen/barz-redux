@@ -227,3 +227,14 @@
     height: auto;
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .background-img-wrapper {
+    position: absolute;
+    z-index: -100;
+    img {
+      max-width: 300%;
+      height: auto;
+    }
+  }
+}

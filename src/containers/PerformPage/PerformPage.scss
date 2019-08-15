@@ -1,7 +1,6 @@
 @import "../../index.scss";
-@import url('https://fonts.googleapis.com/css?family=Rock+Salt&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
-
+@import url("https://fonts.googleapis.com/css?family=Rock+Salt&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
 
 @keyframes scrollDown {
   0% {
@@ -41,13 +40,12 @@
   top: 15vh;
   z-index: 91;
   width: 70vw;
-  height: 80vh;
   box-shadow: 10px 10px 28px -14px rgba(77, 77, 77, 1);
   .scroll-on {
     animation: scrollDown 50s linear 1;
   }
   .lyric-section {
-    font-family: 'Muli', sans-serif;
+    font-family: "Muli", sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,7 +69,7 @@
   position: relative;
   z-index: 200;
   .perform-lyric-title {
-    font-family: 'Rock Salt', cursive;
+    font-family: "Rock Salt", cursive;
     color: white;
     width: 100%;
     margin: 0px 0px 0px 20px;
@@ -86,7 +84,7 @@
     color: white;
     &:hover {
       cursor: pointer;
-      opacity: .7;
+      opacity: 0.7;
     }
   }
 }
@@ -100,5 +98,19 @@
   .display-bar-num {
     margin: 0px 20px;
     color: $main-accent;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .perform-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      position: fixed;
+      z-index: 0;
+      max-width: 300%;
+      height: auto;
+    }
   }
 }

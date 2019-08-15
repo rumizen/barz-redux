@@ -18,7 +18,13 @@ export class HomePage extends Component {
       date: new Date().toLocaleDateString("en-US"),
       id: Date.now(),
       active: true,
-      sections: [{ title: "Verse", id: sectionId, bars: [{ id: Date.now(), text: "", sectionId: sectionId }] }]
+      sections: [
+        {
+          title: "Verse",
+          id: sectionId,
+          bars: [{ id: Date.now(), text: "", sectionId: sectionId }]
+        }
+      ]
     };
     localStorage.setItem(
       "barzLyrics",
@@ -43,27 +49,28 @@ export class HomePage extends Component {
 
     return (
       <main className="home-page">
-        <div className="home-page-image">
-          <img
-            src="./images/djSmall.jpg"
-            alt="a DJ on his turntable with a spotlight shining on him and a background of red stage lights"
-          />
-        </div>
-        <div
-          id="createNewLyric"
-          className="home-page-write-btn"
-          onClick={this.goToWritePage}
-        >
-          <p id="createNewLyric">New Lyrics</p>
-          <img
+        <img
+          className="home-page-main-img"
+          src="./images/djSmall.jpg"
+          alt="a DJ on his turntable with a spotlight shining on him and a background of red stage lights"
+        />
+        <section className="home-page-interface">
+          <div
             id="createNewLyric"
-            className="home-page-write-btn-icon"
-            src="./images/plusBlack.svg"
-            alt="plus sign icon"
-          />
-        </div>
-        <h3 className="recent-lyrics">Recent Lyrics</h3>
-        <section className="home-page-lyrics-wrapper">{allLyrics}</section>
+            className="home-page-write-btn"
+            onClick={this.goToWritePage}
+          >
+            <p id="createNewLyric">New Lyrics</p>
+            <img
+              id="createNewLyric"
+              className="home-page-write-btn-icon"
+              src="./images/plusBlack.svg"
+              alt="plus sign icon"
+            />
+          </div>
+          <h3 className="recent-lyrics">Recent Lyrics</h3>
+          <section className="home-page-lyrics-wrapper">{allLyrics}</section>
+        </section>
       </main>
     );
   }

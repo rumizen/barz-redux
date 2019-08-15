@@ -1,66 +1,81 @@
-@import '../../index.scss';
+@import "../../index.scss";
 
 .home-page {
   display: flex;
   justify-content: flex-end;
+  .home-page-main-img {
+    position: fixed;
+    z-index: 0;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.home-page-interface {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 15vh;
+  margin: 10vh 10vw;
+  width: 25vw;
 }
 
 .home-page-lyrics-wrapper {
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 3px;
-  top: 35vh;
-  right: 2vw;
-  position: fixed;
-  z-index: 5;
   height: 55vh;
-  width: 29.9vw;
   overflow-y: scroll;
-  opacity: .8;
-  border-radius: 4px;
-} 
-
-.home-page-lyrics-wrapper::-webkit-scrollbar { 
-  width: 0 !important; 
+  opacity: 0.8;
+  width: 100%;
 }
 
 .recent-lyrics {
-  top: 28vh;
-  right: 13.5vw;
-  position: fixed;
-  z-index: 5;
   color: white;
   margin: 40px 0px 10px 0px;
-  align-self: center;
 }
 
 .home-page-write-btn {
-  top: 22vh;
-  right: 9.5vw;
-  position: fixed;
-  z-index: 5;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 50px;
-  width: 200px;
+  width: 10vw;
   outline: none;
   font-size: 12pt;
   font-weight: 700;
   background-color: white;
   border-radius: 4px;
   border: solid black 2px;
-  padding: 0px 15px;
-  opacity: .8;
+  padding: 0px 10px;
+  opacity: 0.8;
   &:hover {
-    opacity: .7;
+    opacity: 0.7;
     cursor: pointer;
     background-color: $third-background;
     color: white;
   }
   .home-page-write-btn-icon {
-    height: 4vh;
+    height: 3vh;
+    // margin-left: 170px;
+  }
+}
+
+.home-page-lyrics-wrapper::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+@media screen and (max-width: 1300px) {
+  .home-page {
+    display: flex;
+    justify-content: flex-end;
+    .home-page-main-img {
+      position: fixed;
+      z-index: 0;
+      max-width: 300%;
+      height: auto;
+    }
   }
 }
