@@ -67,6 +67,8 @@
   background-color: black;
   padding: 2px;
   border-bottom: 2px black solid;
+  position: relative;
+  z-index: 200;
   .perform-lyric-title {
     font-family: 'Rock Salt', cursive;
     color: white;
