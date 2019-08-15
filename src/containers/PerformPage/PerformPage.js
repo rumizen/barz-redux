@@ -48,16 +48,20 @@ export class PerformPage extends Component {
           alt="rapper on stage performing with a mic on a blue and purple lit stage"
         />
         <section className="perform-page-bars-wrapper">
-          <h2 className="perform-lyric-title">
-            {activeLyric && activeLyric.title}
-          </h2>
-          <div className={`scroll-section ${this.state.scroll && "scroll-on"}`}>
-            {activeLyric && this.renderAllBars()}
-          </div>
+          <div className="perform-page-title-bar">
+            <h2 className="perform-lyric-title">
+              {activeLyric && activeLyric.title}
+            </h2>
           <button onClick={this.handleClick} className="scroll-btn">
             {!this.state.scroll && "Start"}
             {this.state.scroll && "Stop"}
           </button>
+          </div>
+          <div
+            className={`scroll-section ${this.state.scroll && "scroll-on"}`}
+          >
+            {activeLyric && this.renderAllBars()}
+          </div>
         </section>
       </main>
     );

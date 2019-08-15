@@ -19,7 +19,7 @@ export class RhymeBox extends Component {
             {window.getSelection().toString() || "Highlight a word"}
           </h3>
         </div>
-        {allRhymes}
+        <div className="all-rhymes">{allRhymes}</div>
       </section>
     );
   }

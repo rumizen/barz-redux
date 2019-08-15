@@ -8,28 +8,22 @@
   display: flex;
   flex-direction: column;
   width: 20vw;
-  height: 70vh;
+  height: 82vh;
   overflow-y: scroll;
   background-color: white;
   opacity: .7;
   border-radius: 4px 0px 0px 4px;
   border-left: solid black 2px;
-  padding: 5px;
-  padding-top: 90px;
   .rhyme-box-title {
     border-top: solid black 2px;
-    border-left: solid black 1px;
+    // border-left: solid black 1px;
     opacity: .9;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 4px 0px 0px 0px;
-    width: 20.1vw;
-    padding: 0px 5px 0px 5px;
+    width: 20%;
     background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 100%);
     position: fixed;
-    top: 16.4vh;
-    margin: 5px 0px 0px 0px;
     align-self: center;
     .rhyme-selected {
       margin: 5px 0px 10px 0px;
@@ -40,6 +34,10 @@
       margin: 15px 0px 0px 0px;
     }
   }
+}
+
+.all-rhymes {
+  margin-top: 80px;
 }
 
 .rhyme-box::-webkit-scrollbar { 

@@ -46,33 +46,6 @@
   .scroll-on {
     animation: scrollDown 50s linear 1;
   }
-  .perform-lyric-title {
-    position: relative;
-    z-index: 92;
-    font-family: 'Rock Salt', cursive;
-    background-color: black;
-    color: white;
-    width: 100%;
-    padding: 0px 0px 0px 20px;
-    margin: 0;
-    border-bottom: solid black 1px;
-  }
-  .scroll-btn {
-    position: fixed;
-    z-index: 93;
-    align-self: flex-end;
-    width: 15vw;
-    height: 7vh;
-    border: none;
-    outline: none;
-    font-size: 1.4rem;
-    background-color: $third-background;
-    color: white;
-    &:hover {
-      cursor: pointer;
-      opacity: .7;
-    }
-  }
   .lyric-section {
     font-family: 'Muli', sans-serif;
     display: flex;
@@ -83,6 +56,34 @@
       padding-left: 20px;
       align-self: flex-start;
       color: $third-background;
+    }
+  }
+}
+
+.perform-page-title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  padding: 2px;
+  border-bottom: 2px black solid;
+  .perform-lyric-title {
+    font-family: 'Rock Salt', cursive;
+    color: white;
+    width: 100%;
+    margin: 0px 0px 0px 20px;
+  }
+  .scroll-btn {
+    width: 15vw;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.4rem;
+    background-color: $third-background;
+    color: white;
+    &:hover {
+      cursor: pointer;
+      opacity: .7;
     }
   }
 }
